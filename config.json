@@ -535,7 +535,8 @@
     "hide_mobile_breadcrumbs": false,
     "developer_fixes": false,
     "show_account_bar": true,
-    "stack_product_description": false
+    "stack_product_description": false,
+    "212f_secret_key": "aEu1jE%9HVjfOC1hM!ZOKlJ%OfmgYT7N4$rPWH83IHd^XtL8"
   },
   "read_only_files": [
     "/assets/scss/components/citadel",
@@ -557,8 +558,7 @@
     "customer": {
       "addresses": true,
       "returns": true,
-      "wishlists": {
-      },
+      "wishlists": {},
       "orders": {
         "limit": 20
       },
@@ -587,8 +587,7 @@
           "home_garden"
         ]
       },
-      "images": {
-      },
+      "images": {},
       "settings": {
         "n": "Camden Hardware",
         "homepage_new_products_count": 0,
@@ -2071,10 +2070,33 @@
         "svg_logo": "",
         "enable_custom_fonts": false,
         "enable_hover_navigation": false,
+        "custom_store_css": false,
+        "custom_checkout_css": false,
+        "developer_store_css": false,
+        "developer_checkout_css": false,
+        "header_width": "contained",
+        "show_buy_now": false,
+        "buy_now_button_background_color": "#f1a500",
+        "buy_now_button_background_colorHover": "#f9c300",
+        "buy_now_button_background_colorActive": "#f9c300",
+        "buy_now_button_border_color": "#f1a500",
+        "buy_now_button_border_colorHover": "#f9c300",
+        "buy_now_button_border_colorActive": "#f9c300",
+        "buy_now_button_text_color": "#333333",
+        "buy_now_button_text_colorHover": "#333333",
+        "buy_now_button_text_colorActive": "#333333",
+        "show_empty_cart_button": true,
+        "sign_in_mode": "Email+Password",
+        "login_redirect_url": "/",
         "button--primary-borderColor": "#333333",
         "button--primary-borderColorHover": "#1A1A1A",
         "button--primary-borderColorActive": "#1A1A1A",
-        "navUser-indicator-color": "#ffffff"
+        "navUser-indicator-color": "#ffffff",
+        "hide_breadcrumbs": false,
+        "hide_mobile_breadcrumbs": false,
+        "developer_fixes": false,
+        "show_account_bar": true,
+        "stack_product_description": false
       }
     },
     {
