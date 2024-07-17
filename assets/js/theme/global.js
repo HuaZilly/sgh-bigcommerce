@@ -19,6 +19,9 @@ import autoHighlight from './f/auto-highlight';
 import cardAddToCart from './f/card-add-to-cart';
 import hoverNavigation from './f/hover-navigation';
 import validity from './f/check-validity';
+import hmacSHA384 from 'crypto-js/hmac-sha384';
+import sha384 from 'crypto-js/sha384';
+import Base64 from 'crypto-js/enc-base64';
 import swal from './global/sweet-alert';
 
 export default class Global extends PageManager {
@@ -210,5 +213,132 @@ export default class Global extends PageManager {
             },
         };
         /* BundleB2B */
+
+        let jsContext = this.context,
+            maxRewardKey = jsContext.secretKey,
+            maxRewardBearTokenUrl = jsContext.bearTokenUrl,
+            maxRewardBearTokenUser = jsContext.bearTokenUser,
+            maxRewardBearTokenPassword = jsContext.bearTokenPassword,
+            maxRewardGenerateSsoKeyAPI = jsContext.generateSsoKeyAPI,
+            maxRewardLink = document.querySelector('.max-reward-link a');
+
+        if (maxRewardLink) {
+            maxRewardLink.addEventListener('click', generateSsoKey);
+        }
+
+        Number.prototype.padLeft = function(base, chr){
+            let  len = (String(base || 10).length - String(this).length) + 1;
+            return len > 0 ? new Array(len).join(chr || '0')+this : this;
+        }
+
+        function generateDatabaseDateTime(date) {
+            return date.toISOString().replace("T"," ").substring(0, 19);
+        }
+
+        function calculateDate() {
+            let theDate = new Date;
+
+            return [theDate.getDate().padLeft(),
+                    (theDate.getMonth() + 1).padLeft(),
+                    theDate.getFullYear()].join('-') + '-' +
+                    [theDate.getHours().padLeft(),
+                    theDate.getMinutes().padLeft(),
+                    theDate.getSeconds().padLeft()].join('-');
+
+            // let datenow = new Date();
+            //
+            // // console.log(datenow); // "2021-07-28T18:11:11.282Z"
+            //
+            //
+            //
+            // return generateDatabaseDateTime(datenow); // "2021-07-28 14:11:33"
+
+
+        }
+
+        function generateSsoKey(e) {
+            e.preventDefault();
+            let bearTokenData = {
+                "username": maxRewardBearTokenUser,
+                "password": maxRewardBearTokenPassword
+            };
+            console.log(bearTokenData)
+            // hmac_sha384
+            let options = {
+                method: 'POST',
+                headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+                body: JSON.stringify(bearTokenData)
+            };
+
+            fetch(maxRewardBearTokenUrl, options)
+                .then(response => response.json())
+                .then(response => {
+
+                    // Get Bear Token
+                    console.log(response); // JWT here
+                    return response.token;
+
+                })
+                .then(response => {
+                    let customerEmail = jsContext.customer.email,
+                        token = response;
+                    if (!customerEmail || !token) {
+                        console.log('No email found');
+                        return;
+                    }
+                    let timeStamp = calculateDate(),
+                        hasDigest = sha384(customerEmail + timeStamp),
+                        hmacDigest = Base64.stringify(hmacSHA384(maxRewardKey, hasDigest));
+
+                    return {
+                        token,
+                        hmacDigest,
+                        customerEmail,
+                        timeStamp
+                    }
+                }).then(response => {
+                    if (response.hmacDigest) {
+                        console.log('has digest sha384');
+                        let bearToken = "Bearer " + response.token,
+                            authParams = {
+                                "authParams": {
+                                    "digest": response.hmacDigest,
+                                    "username": response.customerEmail,
+                                    "timestamp": Date.now()
+                                }
+                        };
+
+                        let options = {
+                            method: 'POST',
+                            headers: {
+                                Accept: 'application/json',
+                                'Content-Type': 'application/json',
+                                'Authorization': bearToken
+                            },
+                            body: JSON.stringify(authParams)
+                        };
+
+                        console.log(options.body.timestamp)
+
+                        console.log('options')
+                        console.log(options)
+                        fetch(maxRewardGenerateSsoKeyAPI, options)
+                            .then(response => {
+                                console.log(1)
+                                console.log(response)
+                            })
+                            .then(response => {
+                                console.log(2)
+                                console.log(response)
+                            })
+
+                        // console.log(response)
+
+                    }
+                    else {
+                        console.log('No digest hmac key');
+                    }
+            })
+        }
     }
 }

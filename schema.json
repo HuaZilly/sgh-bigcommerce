@@ -21,6 +21,53 @@
     ]
   },
   {
+    "name": "Max Reward Integration",
+    "settings": [
+        {
+          "type": "text",
+          "label": "Secret Key",
+          "force_reload": true,
+          "id": "max_reward_secret_key"
+        },
+        {
+          "type": "text",
+          "label": "Menu Link",
+          "force_reload": true,
+          "id": "max_reward_menu_link"
+        },
+      {
+        "type": "text",
+        "label": "Menu Label",
+        "force_reload": true,
+        "id": "max_reward_menu_label"
+      },
+      {
+        "type": "text",
+        "label": "Bear Token URL",
+        "force_reload": true,
+        "id": "max_reward_bear_token_url"
+      },
+      {
+        "type": "text",
+        "label": "Bear Token user",
+        "force_reload": true,
+        "id": "max_reward_bear_token_user"
+      },
+      {
+        "type": "text",
+        "label": "Bear Token Password",
+        "force_reload": true,
+        "id": "max_reward_bear_token_password"
+      },
+      {
+        "type": "text",
+        "label": "Generate SSO KEY API",
+        "force_reload": true,
+        "id": "max_reward_generate_ssokey_api"
+      }
+    ]
+  },
+  {
     "name": "B2B Features",
     "settings": [
       {

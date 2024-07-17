@@ -165,6 +165,12 @@
                  <a class="navPages-action" href="{{urls.brands}}">{{lang 'brand.label'}}</a>
              </li>
         {{/and}}
+
+        {{#and theme_settings.max_reward_menu_link theme_settings.max_reward_menu_label }}
+            <li class="navPages-item navPages-item-page max-reward-link">
+                <a class="navPages-action" href="{{theme_settings.max_reward_menu_link}}">{{theme_settings.max_reward_menu_label}}</a>
+            </li>
+        {{/and}}
     </ul>
     <ul class="navPages-list navPages-list--user">
         {{#if currency_selector.currencies.length '>' 1}}
@@ -265,3 +271,10 @@
         {{/if}}
     </ul>
 </nav>
+
+{{inject "secretKey" theme_settings.max_reward_secret_key}}
+{{inject "bearTokenUrl" theme_settings.max_reward_bear_token_url}}
+{{inject "bearTokenUser" theme_settings.max_reward_bear_token_user}}
+{{inject "bearTokenPassword" theme_settings.max_reward_bear_token_password}}
+{{inject "bearTokenPassword" theme_settings.max_reward_bear_token_password}}
+{{inject "generateSsoKeyAPI" theme_settings.max_reward_generate_ssokey_api}}

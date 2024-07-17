@@ -1,5 +1,5 @@
 {
-  "name": "Camden B2B Edition - OQM validation by Flair",
+  "name": "Camden B2B Edition - OQM validation by Flair (2.2)",
   "version": "1.10.2",
   "meta": {
     "price": 23500,
@@ -536,7 +536,13 @@
     "developer_fixes": false,
     "show_account_bar": true,
     "stack_product_description": false,
-    "212f_secret_key": "aEu1jE%9HVjfOC1hM!ZOKlJ%OfmgYT7N4$rPWH83IHd^XtL8"
+    "max_reward_secret_key": "aEu1jE%9HVjfOC1hM!ZOKlJ%OfmgYT7N4$rPWH83IHd^XtL8",
+    "max_reward_menu_link": "https://maxrewards.lori.works/service/ssoLogin?ssokey=ssovalue",
+    "max_reward_menu_label": "Max Rewards",
+    "max_reward_bear_token_url": "https://api.maxrewards.lori.works/api/Authentication/v1/Login",
+    "max_reward_bear_token_user": "stealthapi",
+    "max_reward_bear_token_password": "9^S@j0Ro3LSYyaID",
+    "max_reward_generate_ssokey_api": "https://api.maxrewards.lori.works/api/Authentication/v1/SingleSignOn/GenerateKey"
   },
   "read_only_files": [
     "/assets/scss/components/citadel",
@@ -558,7 +564,8 @@
     "customer": {
       "addresses": true,
       "returns": true,
-      "wishlists": {},
+      "wishlists": {
+      },
       "orders": {
         "limit": 20
       },
@@ -587,7 +594,8 @@
           "home_garden"
         ]
       },
-      "images": {},
+      "images": {
+      },
       "settings": {
         "n": "Camden Hardware",
         "homepage_new_products_count": 0,
@@ -2096,7 +2104,8 @@
         "hide_mobile_breadcrumbs": false,
         "developer_fixes": false,
         "show_account_bar": true,
-        "stack_product_description": false
+        "stack_product_description": false,
+        "212f_secret_key": "aEu1jE%9HVjfOC1hM!ZOKlJ%OfmgYT7N4$rPWH83IHd^XtL8"
       }
     },
     {
