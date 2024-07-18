@@ -245,15 +245,6 @@ export default class Global extends PageManager {
                     theDate.getMinutes().padLeft(),
                     theDate.getSeconds().padLeft()].join('-');
 
-            // let datenow = new Date();
-            //
-            // // console.log(datenow); // "2021-07-28T18:11:11.282Z"
-            //
-            //
-            //
-            // return generateDatabaseDateTime(datenow); // "2021-07-28 14:11:33"
-
-
         }
 
         function generateSsoKey(e) {
@@ -262,8 +253,7 @@ export default class Global extends PageManager {
                 "username": maxRewardBearTokenUser,
                 "password": maxRewardBearTokenPassword
             };
-            console.log(bearTokenData)
-            // hmac_sha384
+
             let options = {
                 method: 'POST',
                 headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
@@ -273,17 +263,22 @@ export default class Global extends PageManager {
             fetch(maxRewardBearTokenUrl, options)
                 .then(response => response.json())
                 .then(response => {
-
                     // Get Bear Token
-                    console.log(response); // JWT here
-                    return response.token;
+                    if (response.token) {
+                        return response.token;
+                    }
+                    else {
+                        return ''
+                    }
 
                 })
-                .then(response => {
-                    let customerEmail = jsContext.customer.email,
-                        token = response;
-                    if (!customerEmail || !token) {
-                        console.log('No email found');
+                .then(token => {
+                    let customerEmail = jsContext.customer.email;
+                    if (!token) {
+                        console.error('Token generate failed');
+                    }
+                    if (!customerEmail) {
+                        console.error('No email found');
                         return;
                     }
                     let timeStamp = calculateDate(),
@@ -296,6 +291,7 @@ export default class Global extends PageManager {
                         customerEmail,
                         timeStamp
                     }
+
                 }).then(response => {
                     if (response.hmacDigest) {
                         console.log('has digest sha384');
@@ -318,25 +314,14 @@ export default class Global extends PageManager {
                             body: JSON.stringify(authParams)
                         };
 
-                        console.log(options.body.timestamp)
-
-                        console.log('options')
-                        console.log(options)
                         fetch(maxRewardGenerateSsoKeyAPI, options)
-                            .then(response => {
-                                console.log(1)
-                                console.log(response)
-                            })
                             .then(response => {
                                 console.log(2)
                                 console.log(response)
                             })
 
-                        // console.log(response)
-
-                    }
-                    else {
-                        console.log('No digest hmac key');
+                    } else {
+                        console.error('No digest hmac key');
                     }
             })
         }

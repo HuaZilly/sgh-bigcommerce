@@ -23,18 +23,18 @@
   {
     "name": "Max Reward Integration",
     "settings": [
-        {
-          "type": "text",
-          "label": "Secret Key",
-          "force_reload": true,
-          "id": "max_reward_secret_key"
-        },
-        {
-          "type": "text",
-          "label": "Menu Link",
-          "force_reload": true,
-          "id": "max_reward_menu_link"
-        },
+      {
+        "type": "text",
+        "label": "Secret Key",
+        "force_reload": true,
+        "id": "max_reward_secret_key"
+      },
+      {
+        "type": "text",
+        "label": "Menu Link",
+        "force_reload": true,
+        "id": "max_reward_menu_link"
+      },
       {
         "type": "text",
         "label": "Menu Label",
