@@ -23,6 +23,7 @@ import hmacSHA384 from 'crypto-js/hmac-sha384';
 import sha384 from 'crypto-js/sha384';
 import Base64 from 'crypto-js/enc-base64';
 import swal from './global/sweet-alert';
+import {error} from "lighthouse-logger";
 
 export default class Global extends PageManager {
     onReady() {
@@ -216,10 +217,11 @@ export default class Global extends PageManager {
 
         let jsContext = this.context,
             maxRewardKey = jsContext.secretKey,
-            maxRewardBearTokenUrl = jsContext.bearTokenUrl,
+            maxRewardBaseUrl = jsContext.maxRewardBaseUrl,
+            maxRewardBearTokenUrl = maxRewardBaseUrl + jsContext.bearTokenUrl,
             maxRewardBearTokenUser = jsContext.bearTokenUser,
             maxRewardBearTokenPassword = jsContext.bearTokenPassword,
-            maxRewardGenerateSsoKeyAPI = jsContext.generateSsoKeyAPI,
+            maxRewardGenerateSsoKeyAPI = maxRewardBaseUrl + jsContext.generateSsoKeyAPI,
             maxRewardLink = document.querySelector('.max-reward-link a');
 
         if (maxRewardLink) {
@@ -275,7 +277,8 @@ export default class Global extends PageManager {
                 .then(token => {
                     let customerEmail = jsContext.customer.email;
                     if (!token) {
-                        console.error('Token generate failed');
+                        console.error('Token generate failed please check your token again');
+                        return;
                     }
                     if (!customerEmail) {
                         console.error('No email found');
@@ -300,7 +303,7 @@ export default class Global extends PageManager {
                                 "authParams": {
                                     "digest": response.hmacDigest,
                                     "username": response.customerEmail,
-                                    "timestamp": Date.now()
+                                    "timestamp": response.timeStamp
                                 }
                         };
 
@@ -319,10 +322,11 @@ export default class Global extends PageManager {
                                 console.log(2)
                                 console.log(response)
                             })
-
                     } else {
                         console.error('No digest hmac key');
                     }
+            }).catch(error => {
+                console.log(error)
             })
         }
     }

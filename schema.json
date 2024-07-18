@@ -37,6 +37,12 @@
       },
       {
         "type": "text",
+        "label": "Max Reward API",
+        "force_reload": true,
+        "id": "max_reward_base_url"
+      },
+      {
+        "type": "text",
         "label": "Menu Label",
         "force_reload": true,
         "id": "max_reward_menu_label"
@@ -61,9 +67,9 @@
       },
       {
         "type": "text",
-        "label": "Generate SSO KEY API",
+        "label": "Generate SSO KEY URL",
         "force_reload": true,
-        "id": "max_reward_generate_ssokey_api"
+        "id": "max_reward_generate_ssokey_url"
       }
     ]
   },
