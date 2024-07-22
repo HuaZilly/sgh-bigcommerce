@@ -98,7 +98,7 @@
 		&.is-open[class] {
 			padding-bottom: 0;
 			margin-bottom: 0;
-			border-bottom: 2px solid $header-bottom-nav-hover;
+			border-bottom: none;
 		}
 	}
 }

@@ -174,7 +174,10 @@ $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
         line-height: $lineHeight-small;
 
         > .navPages-action {
-            font-size: $fontSize-small;
+            font-size: 16px;
+            @media screen and (min-width: 1440px) {
+                font-size: $fontSize-small;
+            }
         }
     }
 }
