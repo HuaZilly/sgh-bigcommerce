@@ -27,8 +27,39 @@
         <span class="mobileMenu-toggleIcon">Toggle menu</span>
     </a>
 
-    <div class="header-logo {{#if theme_settings.svg_logo}} header-logo--image {{#if (first (split theme_settings.logo_size "x")) ">" 200}}header-logo--large{{/if}}{{/if}}{{#if theme_settings.logo_size '===' 'original'}} header-logo--original{{/if}}{{#if settings.store_logo.image}} header-logo--image {{#if (first (split theme_settings.logo_size "x")) ">" 200}}header-logo--large{{/if}}{{/if}} {{#and (if (length (split settings.store_logo.title "")) ">" 9) (unless settings.store_logo.image)}}header-logo--large header-logo--text{{/and}} header-logo--{{theme_settings.logo-position}} {{#if theme_settings.enable_sticky_navigation}}sticky{{/if}}  {{#if (first (split theme_settings.logo_size "x")) "<=" 200}}{{#if settings.gift_certificates_enabled}}header-logo--gift-certificate-enabled{{/if}}{{/if}}">
-        {{> components/common/store-logo}}
+      <div class="header-middle-container">
+
+      <div class="header-left">
+        <ul>
+            <li>
+                <a href="/" alt="Icon 1">
+                    <img src="{{cdn 'img/header/icon-1.svg' }}"  alt="Icon" width="50" height="46" />
+                </a>
+            </li>
+            <li>
+                <a href="/" alt="Icon 2">
+                    <img src="{{cdn 'img/header/icon-2.svg' }}"  alt="Icon" width="40" height="43" />
+                </a>
+            </li>
+            <li>
+                <a href="/" alt="Icon 3">
+                    <img src="{{cdn 'img/header/icon-3.svg' }}"  alt="Icon" width="50" height="46" />
+                </a>
+            </li>
+            <li>
+                <a href="/" alt="Icon 4">
+                    <img src="{{cdn 'img/header/icon-4.svg' }}"  alt="Icon" width="50" height="42" />
+                </a>
+            </li>
+        </ul>
+      </div>
+      <div class="header-logo header-middle {{#if theme_settings.svg_logo}} header-logo--image {{#if (first (split theme_settings.logo_size "x")) ">" 200}}header-logo--large{{/if}}{{/if}}{{#if theme_settings.logo_size '===' 'original'}} header-logo--original{{/if}}{{#if settings.store_logo.image}} header-logo--image {{#if (first (split theme_settings.logo_size "x")) ">" 200}}header-logo--large{{/if}}{{/if}} {{#and (if (length (split settings.store_logo.title "")) ">" 9) (unless settings.store_logo.image)}}header-logo--large header-logo--text{{/and}} header-logo--{{theme_settings.logo-position}} {{#if theme_settings.enable_sticky_navigation}}sticky{{/if}}  {{#if (first (split theme_settings.logo_size "x")) "<=" 200}}{{#if settings.gift_certificates_enabled}}header-logo--gift-certificate-enabled{{/if}}{{/if}}">
+          {{> components/common/store-logo}}
+      </div>
+
+      <div class="header-right">
+          {{> components/f/header/top-utilities}}
+      </div>
     </div>
 
     <div class="search-utils {{#unless theme_settings.show-quick-add-sku}}search-utils--no-quick-add-sku{{/unless}}">
@@ -51,7 +82,6 @@
         {{/all}}
     </div>
 
-    {{> components/f/header/top-utilities}}
 
   </div>
   <div class="header__bottom-nav {{#if customer}}header__bottom-nav--customer{{/if}}">

@@ -1,0 +1,13 @@
+<svg id="Component_47_3" data-name="Component 47 – 3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="41" height="39" viewBox="0 0 41 39">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_215" data-name="Rectangle 215" width="41" height="39" transform="translate(-3 -2)" fill="none" stroke="#b2b3b4" stroke-width="3"/>
+    </clipPath>
+  </defs>
+  <g id="Group_241" data-name="Group 241" transform="translate(3 2)">
+    <g id="Group_239" data-name="Group 239" clip-path="url(#clip-path)">
+      <circle id="Ellipse_9" data-name="Ellipse 9" cx="17" cy="17" r="17" fill="none" stroke="#b2b3b4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+  <path id="Icon_material-account-circle" data-name="Icon material-account-circle" d="M20.089,7.5a5.544,5.544,0,1,1-5.544,5.544A5.537,5.537,0,0,1,20.089,7.5Zm0,26.243A13.307,13.307,0,0,1,9,27.792c.055-3.678,7.392-5.692,11.089-5.692,3.678,0,11.033,2.014,11.089,5.692a13.307,13.307,0,0,1-11.089,5.951Z" transform="translate(-0.5 -1.121)" fill="none" stroke="#b2b3b4" stroke-width="3"/>
+</svg>

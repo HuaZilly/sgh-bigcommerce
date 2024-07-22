@@ -199,13 +199,7 @@ $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
 
 .top-utilities-icon {
     display: block;
-    height: remCalc(20px);
-    width: remCalc(20px);
     position: relative;
-
-    @include breakpoint("xlarge") {
-        margin-right: spacing("third");
-    }
 
     svg {
         fill: stencilColor("header-text-color");
