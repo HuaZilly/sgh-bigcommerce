@@ -24,7 +24,7 @@ body {
 
 [data-content-region="above_header_banner--global"] {
     background-image: $headerTopBarBackground;
-    padding: 15px;
+    padding: 13px 15px;
     p,
     a {
         color: $headerTopBarColor;
@@ -33,6 +33,14 @@ body {
     }
     a {
         font-weight: bold;
+    }
+    div {
+        * {
+            font-weight: $fontWeight-semibold;
+        }
+        a {
+            font-weight: $fontWeight-bold
+        }
     }
 }
 
@@ -48,6 +56,10 @@ body {
     @include breakpoint("xlarge") {
         display: flex;
         flex-flow: row wrap;
+    }
+
+    .header__bottom-nav {
+        padding-bottom: 30px;
     }
 
     &.is-open {

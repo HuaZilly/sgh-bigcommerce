@@ -1,8 +1,9 @@
 $header-text-color: stencilColor("header-text-color");
-$button-color: stencilColor("button--primary-color");
-$button-color-hover: stencilColor("button--primary-colorHover");
-$button-bg: stencilColor("button--primary-backgroundColor");
-$button-bg-hover: stencilColor("button--primary-backgroundColorHover");
+$button-color: #1B2849;
+$button-color-hover: #B2B3B4;
+$button-bg: #eeeff1;
+$button-bg-hover: #eeeff1;
+$button-search-border__color: #A4A9B6;
 $quick-search-bg: stencilColor("quick-search-bg");
 $quick-search-hover: stencilColor("quick-search-hover");
 $quick-search-border: stencilColor("quick-search-border");
@@ -12,13 +13,14 @@ $input-separator-bg: stencilColor("input-separator-bg");
     order: 3;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-grow: 1;
     margin-top: spacing("half");
     z-index: 30;
 
     @include breakpoint("medium") {
         margin-bottom: spacing("half");
+        padding-top: 50px;
     }
 
     @include breakpoint("large") {
@@ -40,7 +42,6 @@ $input-separator-bg: stencilColor("input-separator-bg");
     }
 
     .form-field {
-        border-radius: remCalc(4px);
         margin: 0;
         overflow: hidden;
         position: relative;
@@ -52,10 +53,10 @@ $input-separator-bg: stencilColor("input-separator-bg");
     }
 
     .form-input {
-        border-color: set-off-color-text(stencilColor("input-bg-color"));
-        border-radius: remCalc(4) 0 0 remCalc(4);
+        border-color: $button-search-border__color;
+        border-radius: 0;
         padding-right: (spacing("single") * 3.5);
-
+        height: 46px;
         &.form-input--sku-num {
             border-right: none;
             padding: 0 0 0 spacing("half");
@@ -71,7 +72,7 @@ $input-separator-bg: stencilColor("input-separator-bg");
 
     .search-button {
         background: $button-bg;
-        border: none;
+        border: 1px solid $button-search-border__color;
         bottom: 0;
         color: $button-color;
         font-size: remCalc(18px);
@@ -82,9 +83,17 @@ $input-separator-bg: stencilColor("input-separator-bg");
         top: 0;
         width: remCalc(52px);
 
-        &:hover {
+        &:hover,
+        &:active,
+        &:focus {
             background: $button-bg-hover;
+
             color: $button-color-hover;
+            .search-button-icon {
+                svg {
+                    fill: $button-color-hover;
+                }
+            }
         }
     }
 
@@ -106,7 +115,7 @@ $input-separator-bg: stencilColor("input-separator-bg");
 
     @include breakpoint("medium") {
         width: 100%;
-        max-width: remCalc(500px);
+        max-width: remCalc(655px);
         margin-right: spacing("single");
     }
 

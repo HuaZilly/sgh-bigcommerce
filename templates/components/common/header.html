@@ -32,22 +32,22 @@
       <div class="header-left">
         <ul>
             <li>
-                <a href="/" alt="Icon 1">
+                <a href="/account.php?action=order_status" alt="Icon 1">
                     <img src="{{cdn 'img/header/icon-1.svg' }}"  alt="Icon" width="50" height="46" />
                 </a>
             </li>
             <li>
-                <a href="/" alt="Icon 2">
+                <a href="" alt="Icon 2">
                     <img src="{{cdn 'img/header/icon-2.svg' }}"  alt="Icon" width="40" height="43" />
                 </a>
             </li>
             <li>
-                <a href="/" alt="Icon 3">
+                <a href="/account.php?action=recent_items" alt="Icon 3">
                     <img src="{{cdn 'img/header/icon-3.svg' }}"  alt="Icon" width="50" height="46" />
                 </a>
             </li>
             <li>
-                <a href="/" alt="Icon 4">
+                <a href="/wishlist.php" alt="Icon 4">
                     <img src="{{cdn 'img/header/icon-4.svg' }}"  alt="Icon" width="50" height="42" />
                 </a>
             </li>
@@ -73,13 +73,13 @@
             {{/and}}
         </div>
 
-        {{#all theme_settings.show-quick-add-sku (if theme_settings.restrict_to_login '===' 2) customer}}
-            {{> components/f/b2b/quick-add-form}}
-        {{else}}
-            {{#and theme_settings.show-quick-add-sku (if theme_settings.restrict_to_login '!==' 2)}}
-                {{> components/f/b2b/quick-add-form}}
-            {{/and}}
-        {{/all}}
+<!--        {{#all theme_settings.show-quick-add-sku (if theme_settings.restrict_to_login '===' 2) customer}}-->
+<!--            {{> components/f/b2b/quick-add-form}}-->
+<!--        {{else}}-->
+<!--            {{#and theme_settings.show-quick-add-sku (if theme_settings.restrict_to_login '!==' 2)}}-->
+<!--                {{> components/f/b2b/quick-add-form}}-->
+<!--            {{/and}}-->
+<!--        {{/all}}-->
     </div>
 
 

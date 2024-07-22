@@ -56,7 +56,7 @@
 
 		// Overrides
 		&[class] {
-			margin-right: spacing("single");
+			margin-right: 0;
 		}
 
 		&:last-child {
@@ -71,7 +71,7 @@
 	padding: spacing("third") 0;
 
 	&.is-open {
-		padding-bottom: spacing("half")*1.5;
+		padding-bottom: 0;
 		margin-bottom: spacing("half");
 		border-bottom: 1px solid $navPages-list--user-borderColor;
 
@@ -93,10 +93,10 @@
 	}
 
 	@include breakpoint("medium") {
-		padding: spacing("half") 0;
+		padding: 0;
 
 		&.is-open[class] {
-			padding-bottom: calc(#{spacing("half")} - 2px);
+			padding-bottom: 0;
 			margin-bottom: 0;
 			border-bottom: 2px solid $header-bottom-nav-hover;
 		}
@@ -180,7 +180,7 @@
 		color: $header-bottom-nav-dropdown-color;
 
 		&.is-open {
-			padding-bottom: spacing("quarter");
+			padding-bottom: 0;
 			border: none;
 			opacity: 1;
 			font-weight: $fontWeight-bold;
@@ -429,11 +429,8 @@
 }
 
 .navPages-action {
-	color: $mobile-menu-text-color;
+	color: $color-blue1;
 
-	@include breakpoint("medium") {
-		color: $header-bottom-nav-color;
-	}
 
 	&:focus,
 	&:hover,

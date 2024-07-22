@@ -71,6 +71,8 @@
     height: 100%;
     overflow-y: auto;
     padding: spacing("single");
+    display: flex;
+    justify-content: flex-end;
 
     @include breakpoint("medium") {
         @include grid-row(); // 1
@@ -84,6 +86,15 @@
 
     ul {
         list-style: none;
+
+        .navPages-item {
+            padding: 0 30px;
+            border-right: 1px solid $color-blue1;
+            &:last-child {
+                padding-right: 0;
+                border-right: 0;
+            }
+        }
     }
 
     .navPage-subMenu-list {
@@ -186,17 +197,17 @@
 }
 
 .navPages-action {
-    color: stencilColor("header-bottom-nav-dropdown-color");
+    color: $color-blue1;
     display: block;
     font-size: fontSize("smaller");
     font-weight: fontWeight("bold");
-    padding: spacing("half") 0;
+    padding: 0;
     text-decoration: none;
     text-transform: uppercase;
 
     @include breakpoint("medium") {
         display: inline-block;
-        padding: spacing("half") (spacing("half") + spacing("quarter")) (spacing("half") + spacing("quarter"));
+        padding: 0;
 
         &.is-open {
             background-color: stencilColor("mobile-menu-bg");

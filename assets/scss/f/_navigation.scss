@@ -169,12 +169,19 @@ $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
 .dropdown-menu {
     outline: none;
 }
+.navPages-list {
+    > .navPages-item {
+        line-height: $lineHeight-small;
 
+        > .navPages-action {
+            font-size: $fontSize-small;
+        }
+    }
+}
 .navUser-action,
 .navPages-action {
     color: stencilColor("mobile-menu-text-color");
-    font-size: $fontSize-smaller;
-    text-transform: none;
+    text-transform: uppercase;
 
     //@include breakpoint("medium") {
     //    color: stencilColor("header-bottom-nav-color");

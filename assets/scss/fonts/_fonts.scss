@@ -1,5 +1,4 @@
 @import "clear-sans";
-@import "montserrat";
 
 $fonts: $fontFamily-sans $fontFamily-serif $fontFamily-mono $fontFamily-headings $fontFamily-hero;
 
@@ -7,6 +6,3 @@ $fonts: $fontFamily-sans $fontFamily-serif $fontFamily-mono $fontFamily-headings
     @include clear-sans;
 }
 
-@if contains($fonts, "'Montserrat', sans-serif") {
-    @include montserrat;
-}
