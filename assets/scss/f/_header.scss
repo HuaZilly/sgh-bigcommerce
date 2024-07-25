@@ -25,6 +25,7 @@ body {
 [data-content-region="above_header_banner--global"] {
     background-image: $headerTopBarBackground;
     padding: 13px 15px;
+    z-index: 2;
     p,
     a {
         color: $headerTopBarColor;
@@ -52,6 +53,7 @@ body {
     padding: 0;
     position: relative;
     top: auto;
+    z-index: 1;
 
     @include breakpoint("xlarge") {
         display: flex;
@@ -107,6 +109,18 @@ body {
         z-index: 30;
         padding: spacing("single");
         padding-top: spacing("half");
+        position: relative;
+
+        .navUser-item--max-rewards[class] {
+            position: absolute;
+            top: -26px;
+            display: block;
+            right: 0;
+            img {
+                width: 120px;
+                height: auto;
+            }
+        }
 
         @include breakpoint("medium") {
             align-items: center;
