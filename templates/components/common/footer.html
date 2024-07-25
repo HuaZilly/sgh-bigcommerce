@@ -19,10 +19,17 @@
         </div>
     {{/if}}
 {{/if}}
-{{{region name="above_footer--global"}}}
+
 {{{region name="above_footer"}}}
-<footer class="footer" role="contentinfo">
+
+<div class="before-footer-region">
     <div class="container container--footer">
+        {{{region name="above_footer--global"}}}
+    </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+    <div class="container">
         <div class="footer-logo">
             <span>
                 <img src="{{cdn 'img/header/footer-logo.svg' }}" width="440" height="51" alt="Footer Logo" />

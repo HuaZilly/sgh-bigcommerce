@@ -21,6 +21,23 @@ $footer-text__color: #B2B3B4;
     padding: spacing("double") 0;
 }
 
+.container {
+    .footer-image-group {
+        padding-top: 0;
+        .section-image {
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        .footer-image-group {
+            padding-bottom: 30px
+        }
+    }
+}
+
 .footer-info {
     @include grid-row($behavior: nest);
     font-size: 0; // 1
