@@ -382,3 +382,15 @@ $hero-arrow-next: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     color: $carousel-description-color;
     font-size: $fontSize-smaller;
 }
+
+[data-content-region="below_header"] {
+    [data-sub-layout] {
+        padding: 0;
+    }
+}
+.hero-banner-carousel {
+    margin-bottom: 30px;
+    .slick-arrow {
+        opacity: 0;
+    }
+}

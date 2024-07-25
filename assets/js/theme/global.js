@@ -23,7 +23,6 @@ import hmacSHA384 from 'crypto-js/hmac-sha384';
 import sha384 from 'crypto-js/sha384';
 import Base64 from 'crypto-js/enc-base64';
 import swal from './global/sweet-alert';
-import {error} from "lighthouse-logger";
 
 export default class Global extends PageManager {
     onReady() {
@@ -59,6 +58,15 @@ export default class Global extends PageManager {
             topBannerHeight = topBanner.height() + 26;
         }
         document.documentElement.style.setProperty('--app-global-banner-height', topBannerHeight + 'px');
+
+
+        let heroBannerCarousel = $('.hero-banner-carousel'),
+            heroContainer = heroBannerCarousel.find('.hero-banner');
+        console.log(heroBannerCarousel);
+        console.log(heroContainer);
+        if(heroContainer.length > 0) {
+            heroContainer.slick()
+        }
 
         function validateQuantity(quantityInput) {
             const quantity = parseInt(quantityInput.value);
