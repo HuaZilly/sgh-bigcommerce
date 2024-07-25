@@ -171,8 +171,12 @@ body {
                 text-align: center;
                 display: block;
             }
-            .navUser-item--cart {
+            .navUser-item--cart[class] {
                 display: inline-block;
+
+                .navUser-action {
+                    display: inline;
+                }
             }
 
 
