@@ -374,7 +374,7 @@
 	@include breakpoint("medium") {
 		flex: 1 1 auto;
 		margin: 0;
-		padding-right: spacing("single");
+		padding-right: 0;
 	}
 
 	@include breakpoint("large") {

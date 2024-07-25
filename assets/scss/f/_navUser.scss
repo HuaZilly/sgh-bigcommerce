@@ -109,7 +109,10 @@
 		display: none;
 
 		@include breakpoint("medium") {
-			display: inline-flex;
+			display: inline-block;
+			.navUser-action {
+				display: inline-block;
+			}
 		}
 	}
 
@@ -140,7 +143,7 @@
 
 	@include breakpoint("medium") {
 		color: stencilColor("header-text-color");
-		padding: spacing("half") 0;
+		padding:0;
 	}
 
 	&:focus {

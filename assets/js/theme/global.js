@@ -53,6 +53,13 @@ export default class Global extends PageManager {
             $('.apple-pay-checkout-button').show();
         }
 
+        let topBanner = $('[data-content-region="above_header_banner--global"]'),
+            topBannerHeight = 0;
+        if (topBanner.length > 0) {
+            topBannerHeight = topBanner.height() + 26;
+        }
+        document.documentElement.style.setProperty('--app-global-banner-height', topBannerHeight + 'px');
+
         function validateQuantity(quantityInput) {
             const quantity = parseInt(quantityInput.value);
             const moq = parseInt(quantityInput.step);

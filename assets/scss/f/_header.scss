@@ -30,7 +30,13 @@ body {
     a {
         color: $headerTopBarColor;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 14px;
+    }
+    @include breakpoint("medium") {
+        p,
+        a {
+            font-size: 18px;
+        }
     }
     a {
         font-weight: bold;
@@ -66,7 +72,7 @@ body {
 
     &.is-open {
         position: fixed;
-        top: 0;
+        top: var(--app-global-banner-height);
     }
 
     .header-middle-container {
@@ -119,13 +125,31 @@ body {
 
         .navUser-item--max-rewards[class] {
             position: absolute;
-            top: -26px;
+            top: -100px;
             display: block;
-            right: 0;
+            right: 13px;
+            @include breakpoint("medium") {
+                top: -30px;
+                right: 0;
+            }
+
             img {
                 width: 120px;
                 height: auto;
             }
+        }
+        .navUser-section {
+            padding-right: 140px;
+            @include breakpoint("medium") {
+                padding-right: 160px;
+            }
+        }
+        .logo-inner {
+            display: block;
+        }
+
+        .logo-outer {
+            display: none;
         }
 
         @include breakpoint("medium") {
@@ -135,9 +159,23 @@ body {
             margin-right: auto;
             max-width: layout("max") + ($container-padding * 4);
             min-height: remCalc(90px);
-            .header-left {
+            .header-left,
+            .header-right .navUser-item--support,
+            .header-right .navUser-item--question {
                 display: block;
             }
+            .logo-inner {
+                display: none;
+            }
+            .logo-outer {
+                text-align: center;
+                display: block;
+            }
+            .navUser-item--cart {
+                display: inline-block;
+            }
+
+
         }
 
         @include breakpoint("large") {
@@ -398,7 +436,7 @@ body {
     &--large,
     &--original {
         width: auto;
-        flex-basis: 50%;
+        flex-basis: 100%;
         flex-grow: 1;
         justify-content: center;
         padding-right: 0;
@@ -407,7 +445,6 @@ body {
         @include breakpoint("medium") {
             a {
                 text-align: left;
-                padding-top: 50px;
             }
         }
 
