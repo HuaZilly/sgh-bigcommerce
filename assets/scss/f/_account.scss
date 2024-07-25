@@ -2,8 +2,13 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  min-width: 800px;
+  min-width: auto;
   margin: auto;
+
+  @include breakpoint("medium") {
+    min-width: 800px;
+  }
+
   // Nav bar
   nav {
     margin-bottom: spacing("double");
