@@ -19,7 +19,7 @@ address {
 
 .footer-info-col {
     color: stencilColor("footer-textColor");
-    font-size: fontSize("base");
+    font-size: remCalc(15px);
 
     @include breakpoint("medium") {
         width: width("6/12");
@@ -50,7 +50,8 @@ address {
 
 .footer-info-col--small {
     @include breakpoint("medium") {
-        width: width("2/12");
+        width: auto;
+        max-width: width("4/12");
     }
 }
 
@@ -90,7 +91,7 @@ address {
 
 .footer-info-col--subscription {
     @include breakpoint("small") {
-        text-align: center;
+        text-align: left;
         width: width("12/12");
     }
 
@@ -111,33 +112,12 @@ address {
 }
 
 .footer-info-heading {
-    color: stencilColor("footer-headingColor");
     font-size: fontSize("smaller");
     margin-top: 0;
 }
 
-.footer-info-list {
-    line-height: 2;
-
-    a {
-        color: stencilColor("footer-textColor");
-        font-size: $fontSize-smaller;
-
-        @include breakpoint("medium") {
-            font-size: $fontSize-base;
-        }
-
-        // scss-lint:disable NestingDepth
-        &:hover {
-            color: set-off-color(stencilColor("footer-textColor"));
-        }
-        // scss-lint:enable NestingDepth
-
-    }
-}
-
 .footer-copyright {
-    text-align: center;
+    text-align: left;
 
     @include breakpoint("small") {
         text-align: left;
@@ -204,6 +184,10 @@ address {
         .footer-info {
             display: flex;
             justify-content: space-between;
+            &:after,
+            &:before {
+                content: unset;
+            }
         }
     }
 }

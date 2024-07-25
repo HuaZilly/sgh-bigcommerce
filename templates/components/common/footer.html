@@ -23,7 +23,21 @@
 {{{region name="above_footer"}}}
 <footer class="footer" role="contentinfo">
     <div class="container container--footer">
+        <div class="footer-logo">
+            <span>
+                <img src="{{cdn 'img/header/footer-logo.svg' }}" width="440" height="51" alt="Footer Logo" />
+            </span>
+        </div>
         <section class="footer-info">
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">Trade Member Direct</h5>
+                <ul class="footer-info-list">
+                    <li> 2nd Floor, </li>
+                    <li>43 Cedric Street,</li>
+                    <li>Stirling, Western Australia, 6021</li>
+                </ul>
+            </article>
+
             <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
                 <h5 class="footer-info-heading">{{lang 'footer.navigate'}}</h5>
                 <ul class="footer-info-list">
@@ -83,57 +97,8 @@
             </article>
             {{/if}}
 
-            <article class="footer-info-col footer-info-col--subscription" data-section-type="newsletterSubscription">
-                {{#if settings.show_newsletter_box}}
-                    {{> components/common/subscription-form}}
-                {{/if}}
-                {{#and theme_settings.social_icon_placement_bottom social_media}}
-                    <div class="footer-info-col--social" data-section-type="footer-SocialIcons">
-                            <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
-                            {{> components/common/social-links}}
-                    </div>
-                {{/and}}
-                {{{region name="ssl_site_seal--global"}}}
-            </article>
         </section>
-    </div>
-    <div class="wrapper--footerBase">
-            <div class="container">
-                <div class="footer-info footer-info--base">
-                    <div class="footer-info-col footer-info-col--base footer-info-col--icons">
-                        {{> components/f/footer/payment-icons}}
-                    </div>
-                    <div class="footer-info-col  footer-info-col--base">
-                        {{#or theme_settings.show_designed_by theme_settings.show_powered_by}}
-                            <div class="footer-copyright">
-                                <p class="powered-by">
-                                {{#if theme_settings.show_designed_by}}
-                                    <span>Designed by <a href="https://www.flairconsultancy.com?utm_source=store&amp;utm_medium=designedbyFlair" rel="nofollow" target="_blank">Flair</a></span>
-                                {{/if}}
-                                {{#if theme_settings.show_powered_by}}
-                                    <span>Powered by <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow" target="_blank">BigCommerce</a></span>
-                                {{/if}}
-                                </p>
-                            </div>
-                        {{/or}}
-                        {{#if theme_settings.show_copyright_footer}}
-                            <div class="footer-copyright">
-                                <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} </p>
-                            </div>
-                        {{/if}}
-                        {{#if settings.shopper_consent_tracking_enabled}}
-                            <div class="footer-copyright">
-                                <a class="consent-manager" onclick="event.stopPropagation(); window.consentManager.openConsentManager();">{{lang 'footer.consent_manager'}}</a>
-                            </div>
-                        {{/if}}
-                    </div>
-
-                </div>
-        </div>
     </div>
 </footer>
 {{{region name="below_footer"}}}
 {{{region name="below_footer--global"}}}
-{{#if theme_settings.show_newsletter_popup}}
-    {{> components/f/newsletter-popup/popup}}
-{{/if}}
