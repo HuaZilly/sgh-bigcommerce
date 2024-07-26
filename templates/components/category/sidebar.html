@@ -53,10 +53,21 @@
             {{/unless}}
         {{/if}}
     {{/if}}
-
     {{#if category.faceted_search_enabled}}
       {{> components/faceted-search/index category}}
     {{else}}
       {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
     {{/if}}
+    <div class="looking-for-block desktop">
+        <div class="content-inner">
+            <div class="block-title">
+                Can’t find what you’re looking for?
+            </div>
+            <div class="cta">
+                <a href="/contact-us/">
+                    <span>Contact Us</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </nav>

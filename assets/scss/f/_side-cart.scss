@@ -25,6 +25,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
 }
 
 .side-cart-container {
+  background: $color-grey1;
   display: block;
   float: right;
   width: 25%;
@@ -50,7 +51,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
 }
 
 .side-cart {
-  background: stencilColor("container-fill-base");
+  background: $color-grey1;
   border-radius: 0;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
   margin-bottom: spacing("single");
@@ -64,7 +65,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
 
   h4 {
     font-size: $fontSize-base;
-    font-weight: $fontWeight-normal;
+    font-weight: $fontWeight-semibold;
     margin-bottom: spacing("quarter");
     margin-top: 0;
     text-decoration: none;
@@ -73,7 +74,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
   .side-cart-content,
   .side-cart-title,
   .side-cart-sku-add {
-    border-bottom: container("border");
+    border-bottom: 2px solid $color-white;
   }
 
   .sku-add {
@@ -81,9 +82,10 @@ $card-color-hover: stencilColor("card-title-color-hover");
   }
 
   .side-cart-title {
-    font-size: $fontSize-large;
-    font-weight: 600;
+    font-size: $fontSize-xxl;
+    font-weight: 700;
     padding-bottom: spacing("base");
+    text-align: center;
   }
 
   .side-cart-item-name a {

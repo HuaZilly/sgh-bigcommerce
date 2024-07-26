@@ -15,6 +15,17 @@
 
 .breadcrumbs {
   text-align: left;
+  .breadcrumb {
+    font-size: $fontSize-smaller;
+    &:before {
+      content: " > ";
+    }
+    &:first-child {
+      &:before {
+        content: "";
+      }
+    }
+  }
 }
 
 .breadcrumb {
@@ -22,7 +33,7 @@
 
   .breadcrumb-label {
     color: stencilColor("color-textLink");
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   &:last-of-type {
