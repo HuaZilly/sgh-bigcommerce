@@ -12,6 +12,7 @@ export default function () {
             $searchQuery.trigger('blur');
             $quickSearchResults.html('');
             $quickSearchClear.hide();
+            $quickSearchResults.removeClass('rendered');
         },
         show: (event) => {
             $searchQuery.trigger('focus');
@@ -38,10 +39,12 @@ export default function () {
             }
 
             $quickSearchResults.html(response);
+            $quickSearchResults.addClass('rendered');
             $quickSearchClear.show();
 
             $('.modal-close').on('click', (event) => {
                 $quickSearchResults.empty().hide();
+                $quickSearchResults.removeClass('rendered');
                 $searchQuery.val('');
                 event.preventDefault();
             });
@@ -73,5 +76,9 @@ export default function () {
         }
 
         return true;
+    });
+
+    $(document).on('click', '#quickSearch .view-all-button', function () {
+        $('#quickSearch').find('form').trigger('submit');
     });
 }

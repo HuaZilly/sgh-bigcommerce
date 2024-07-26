@@ -17,7 +17,7 @@
                                 <div class="card-text card-text-brand">{{brand.name}}</div>
                             {{/if}}
                             {{#if sku}}
-                                <div class="card-text card-text-sku">{{lang 'products.sku'}} {{sku}}</div>
+                            <div class="card-text card-text-sku"><span class="text-label">{{lang 'products.sku'}} </span> {{sku}}</div>
                             {{/if}}
                             {{#if ../settings.show_product_rating}}
                                 {{#if rating '>' 0}}
@@ -70,8 +70,11 @@
                         {{/or}}
                     </figure>
                 </div>
-            </li>
+        </li>
         {{/each}}
+        <li class="product view-all-button">
+         <span>VIEW ALL RESULTS</span>
+        </li>
     </ul>
 {{else}}
     <p class="quickSearchMessage">

@@ -172,13 +172,17 @@ $input-separator-bg: stencilColor("input-separator-bg");
 .quickSearchResults {
     // Importants are used to overwrite JS inline styles
     background-color: $quick-search-bg;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    border-top: none;
     left: 0;
     position: absolute;
     right: remCalc(52px);
     top: 100%;
     z-index: 100;
     margin-top: 0;
+    width: 100%;
+    &.rendered {
+        border: 1px solid $button-search-border__color;
+    }
 
     @include breakpoint("medium") {
         display: block !important;
@@ -237,14 +241,42 @@ $input-separator-bg: stencilColor("input-separator-bg");
             border: none;
         }
     }
+    .productGrid {
+        > .product {
+            &:last-child {
+                .quick-search-card {
+                    &:after {
+                        background: transparent;
+                    }
+                }
+            }
+        }
+        .view-all-button {
+            padding: 21px;
+            font-size: remCalc(15px);
+            text-align: center;
+            font-weight: $fontWeight-semibold;
+            cursor: pointer;
+        }
+    }
 
     .quick-search-card {
         border-bottom: $quick-search-border;
         display: grid;
-        grid-template-columns: 7.5% auto;
+        grid-template-columns: 10% auto;
         height: auto;
         padding: spacing("base");
         width: 100%;
+        &:after {
+            content: '';
+            display: block;
+            width: calc(100% - 30px);
+            height: 2px;
+            background: stencilColor("color-primary");
+            bottom: 0;
+            position: absolute;
+            left: 15px;
+        }
 
         img {
             max-height: 50px;
@@ -284,9 +316,13 @@ $input-separator-bg: stencilColor("input-separator-bg");
         .card-text-sku {
             float: left;
         }
+        .text-label,
+        .card-text-brand {
+            font-weight: 600;
+        }
 
         .card-text-brand + .card-text-sku::before {
-            content: "|";
+            content: "";
             font-size: 1.2rem;
             line-height: spacing("base");
             margin: 0 spacing("quarter");
@@ -311,7 +347,8 @@ $input-separator-bg: stencilColor("input-separator-bg");
         .card-title {
             grid-row-start: 2;
             margin: 0 0 spacing("eighth");
-            font-size: $fontSize-smallest;
+            font-size: remCalc(17px);
+            font-weight: 600;
         }
 
         .card-text {
@@ -327,7 +364,7 @@ $input-separator-bg: stencilColor("input-separator-bg");
         margin: 0;
         padding: spacing("half")*1.5;
         word-break: break-word;
-        font-size: $fontSize-smallest;
+        font-size: remCalc(17px);
     }
 }
 
@@ -350,10 +387,9 @@ $input-separator-bg: stencilColor("input-separator-bg");
 }
 
 .quickSearchInput {
-
     .modal-close {
         display: none;
         right: remCalc(62);
-        top: remCalc(10);
+        top: remCalc(13);
     }
 }

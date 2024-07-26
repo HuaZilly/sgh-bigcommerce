@@ -7,6 +7,9 @@
 //
 // =============================================================================
 
+body {
+    overflow-x: hidden;
+}
 
 .body {
     margin-bottom: spacing("double");
