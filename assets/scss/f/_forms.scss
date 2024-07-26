@@ -23,6 +23,16 @@
     }
 }
 
+.form-input {
+  height: $form-input__height;
+}
+
+.form-select--small,
+.form-select--date {
+    background-position: right 15px top 6px;
+    background-size: 30px;
+}
+
 .form-column {
     .form-field {
         padding-left: 0;
@@ -45,6 +55,7 @@
         top: 0;
     }
 }
+
 
 .form-field--agree {
     @include breakpoint("small") {

@@ -25,3 +25,7 @@
         fill: stencilColor("button--default-color");
     }
 }
+
+.button {
+    font-size: $fontSize-button;
+}

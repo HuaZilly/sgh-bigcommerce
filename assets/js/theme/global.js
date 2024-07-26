@@ -239,8 +239,9 @@ export default class Global extends PageManager {
             maxRewardGenerateSsoKeyAPI = maxRewardBaseUrl + jsContext.generateSsoKeyAPI,
             maxRewardLink = document.querySelector('.max-reward-link a');
 
-        if (maxRewardLink) {
-            maxRewardLink.addEventListener('click', generateSsoKey);
+
+        if (maxRewardLink && jsContext.customer !== null) {
+            window.addEventListener('load', generateSsoKey);
         }
 
         Number.prototype.padLeft = function(base, chr){
@@ -284,9 +285,8 @@ export default class Global extends PageManager {
                     if (response.token) {
                         return response.token;
                     }
-                    else {
-                        return ''
-                    }
+
+                    return '';
 
                 })
                 .then(token => {
@@ -316,9 +316,9 @@ export default class Global extends PageManager {
                         let bearToken = "Bearer " + response.token,
                             authParams = {
                                 "authParams": {
-                                    "digest": response.hmacDigest,
                                     "username": response.customerEmail,
-                                    "timestamp": response.timeStamp
+                                    "timestamp": response.timeStamp,
+                                    "digest": response.hmacDigest
                                 }
                         };
 

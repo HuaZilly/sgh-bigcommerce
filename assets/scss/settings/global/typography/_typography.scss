@@ -41,7 +41,10 @@ $fontSize-large:                stencilNumber("fontSize-h3");
 $fontSize-small:                stencilNumber("fontSize-h4");
 $fontSize-smaller:              stencilNumber("fontSize-h5");
 $fontSize-smallest:             stencilNumber("fontSize-h6");
+$fontSize-xl:                   15px;
 $fontSize-tiny:                 13px;
+$fontSize-button:               14px;
+$fontSize-xxl:                  33px;
 $fontSize-logo-large:           stencilNumber("logo_fontSize");
 $fontSize-logo-medium:          $fontSize-logo-large - 6px;
 $fontSize-logo-small:           $fontSize-logo-medium - 2px;
@@ -87,3 +90,9 @@ $letterSpacing-smallest:        0.25px;
 // Additional Colour
 
 $color-blue1: #1B2849;
+$color-grey1: #eeeff1;
+$color-grey2: #A4A9B6;
+
+// Form Variables
+
+$form-input__height: 47px;

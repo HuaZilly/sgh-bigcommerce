@@ -53,10 +53,6 @@ $card-outStock-color: stencilColor("card-outStockColor");
   .card-title {
     a {
       color: $card-color;
-
-      &:hover {
-        color: $card-color-hover;
-      }
     }
   }
 
@@ -97,7 +93,15 @@ $card-outStock-color: stencilColor("card-outStockColor");
   }
 
   .button {
-    height: spacing("double");
+    height: auto;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    max-width: 135px;
+
+    &.button--cardAction {
+      max-width: max-content;
+      margin-bottom: 0;
+    }
 
     &.button--small {
       height: auto;
@@ -202,6 +206,7 @@ $card-outStock-color: stencilColor("card-outStockColor");
   margin-right: spacing("third");
   font-size: fontSize("smallest");
   font-weight: fontWeight("bold");
+  margin-bottom: 0;
 
   + .card-text--sku {
     display: block;
@@ -211,6 +216,7 @@ $card-outStock-color: stencilColor("card-outStockColor");
 }
 
 .card-text--sku {
+  margin: 0;
   @include breakpoint("small") {
     font-size: fontSize("smallest");
   }
@@ -276,6 +282,7 @@ $card-outStock-color: stencilColor("card-outStockColor");
   align-items: flex-end;
   display: block;
   justify-content: space-between;
+  text-align: center;
 }
 
 .card-section-rightWrapper {
@@ -285,13 +292,13 @@ $card-outStock-color: stencilColor("card-outStockColor");
 
 .form-cardAdd {
   align-items: baseline;
-  display: inline-block; // Fallback for IE9
   display: inline-flex;
+  justify-content: center;
   flex-grow: 1;
   font-size: fontSize("base");
   position: relative;
   vertical-align: middle;
-  margin-bottom: spacing("half");
+  margin-bottom: 0;
   width: 100%;
 }
 
@@ -315,7 +322,7 @@ $card-outStock-color: stencilColor("card-outStockColor");
   height: spacing("double");
   line-height: remCalc(15px);
   margin: 0;
-  border-radius: 0px 4px 4px 0px;
+  border-radius: 0;
   padding: inherit;
 }
 
@@ -331,11 +338,18 @@ $card-outStock-color: stencilColor("card-outStockColor");
   display: inline-block;
   line-height: $buttonSize-default-fontSize;
   max-width: remCalc(48);
-  padding: remCalc(2);
+  padding: 3px;
   text-align: center;
   vertical-align: top;
+  border-width: 2px;
   width: remCalc(48);
-  border-radius: 4px 0px 0px 4px;
+  border-right: 0;
+  font-weight: $fontWeight-semibold;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+  }
 }
 
 .button-wishlist {
@@ -412,7 +426,7 @@ $card-outStock-color: stencilColor("card-outStockColor");
   }
 
   .card-section-rightWrapper--inner {
-    border-top: container("border");
+    border-top: 0;
     padding-top: spacing("half");
     padding-top: spacing("half");
   }
@@ -812,7 +826,9 @@ $card-outStock-color: stencilColor("card-outStockColor");
 
 .card-brandwrap {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  margin: 15px 0;
 }
 
 .card-label-name,

@@ -42,7 +42,7 @@ $price-secondary-color: stencilColor("color-textSecondary");
 
 .price-primary {
   color: $price-primary-color;
-  font-size: fontSize("small");
+  font-size: $fontSize-xxl;
 
   + abbr {
     color: $price-primary-color;

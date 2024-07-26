@@ -7,15 +7,15 @@
 
   .productCount__show {
     color: stencilColor("color-textBase");
-    font-size: $fontSize-smallest;
-    font-weight: $fontWeight-bold;
+    font-size: $fontSize-xl;
+    font-weight: $fontWeight-semibold;
     margin-right: spacing("third");
   }
 
   .productCount__show,
   .productCount__item {
     color: stencilColor("color-textBase");
-    font-size: $fontSize-smallest;
+    font-size: $fontSize-xl;
     margin-right: spacing("half");
   }
 

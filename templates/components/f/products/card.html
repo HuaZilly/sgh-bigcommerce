@@ -65,32 +65,34 @@
         </figcaption>
     </figure>
     {{#if show_compare}}
-    <label class="button button--compare" for="compare-{{id}}">
+    <label class="button button--compare" style="display: none" for="compare-{{id}}">
         <input type="checkbox" name="products[]" value="{{id}}" id="compare-{{id}}" data-compare-id="{{id}}"> {{lang 'products.compare'}}
     </label>
     {{/if}}
     </div>
     <div class="card-section card-section--body">
+        <h4 class="card-title">
+            {{#if demo}}
+            {{name}}
+            {{else}}
+            <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
+            {{/if}}
+        </h4>
+
         {{#or brand.name sku}}
             <div class="card-brandwrap">
                 {{#if brand.name}}
                     <p class="card-text card-text--brand" data-test-info-type="brandName">{{brand.name}}</p>
                 {{/if}}
                 {{#if sku}}
-                    <p class="card-text card-text--sku">{{lang 'products.sku'}} {{sku}}</p>
+                    <p class="card-text card-text--sku"> <span class="text-label">{{lang 'products.sku'}} </span> {{sku}}</p>
                 {{/if}}
             </div>
         {{/or}}
-        <h4 class="card-title">
-            {{#if demo}}
-                {{name}}
-            {{else}}
-                <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
-            {{/if}}
-        </h4>
+
         {{#if show_rating}}
             {{#if num_reviews}}
-                <p class="card-text" data-test-info-type="productRating">
+                <p class="card-text" style="display: none" data-test-info-type="productRating">
                     <span class="rating--small">
                         {{> components/products/ratings rating=rating}}
                     </span>

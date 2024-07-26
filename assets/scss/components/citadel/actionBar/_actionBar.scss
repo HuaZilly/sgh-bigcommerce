@@ -41,6 +41,6 @@
 
     .form-select {
         color: stencilColor("color-textLink");
-        height: $input-small-height - remCalc($input-border-width * 2);
+        height: remCalc(40px);
     }
 }

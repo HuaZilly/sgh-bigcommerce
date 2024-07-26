@@ -1,11 +1,122 @@
+
+.is-category-page {
+  .body {
+    background: $color-white;
+  }
+  .category__header {
+    margin-bottom: 30px;
+
+    @include breakpoint("medium") {
+      width: calc(100% - 260px);
+      margin: 0 0 30px auto;
+    }
+  }
+  .category-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .category__title {
+      display: inline-block;
+      margin: 0;
+      font-weight: $fontWeight-semibold;
+    }
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+      .filter-container {
+        width: 100%;
+        .actionBar {
+
+        }
+      }
+      .category-title-container {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .category-options {
+    display: flex;
+    align-items: center;
+    background: $color-grey1;
+    padding: 5px;
+    .actionBar {
+      margin: 0;
+    }
+    .actionBar-section {
+      display: flex;
+      float: none;
+      align-items: center;
+      .form-field {
+        margin: 0;
+      }
+      .form-label {
+        margin-right: 10px;
+        font-size: $fontSize-smaller
+      }
+    }
+    .show-style {
+      display: flex;
+      margin: 0 10px 0 50px;
+      .productCount__item {
+        text-decoration: underline;
+      }
+    }
+    .grid-list-switcher {
+      margin-left: 40px
+    }
+  }
+}
+
+.productCards--grid {
+  .card {
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
 .category {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: minmax(40px, max-content);
+  grid-template-rows: minmax(0, max-content);
   margin-bottom: spacing("single");
 
   @include breakpoint("medium") {
     grid-template-columns: 270px calc(100% - 270px);
+  }
+
+  .looking-for-block {
+    background: $color-primary;
+    color: $color-white;
+    text-align: center;
+    padding: 20px 20px 30px;
+    margin-top: 15px;
+    .block-title {
+      font-size: remCalc(31px);
+      line-height: remCalc(39px);
+      font-weight: $fontWeight-semibold
+    }
+    a {
+      background: $color-white;
+      display: inline-block;
+      padding: 15px;
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-top: 15px;
+      font-weight: $fontWeight-semibold
+    }
+
+    &.desktop {
+      display: none;
+    }
+    @include breakpoint("medium") {
+      &.desktop {
+        display: block;
+      }
+      &.mobile {
+        display: none;
+      }
+    }
   }
 
   @include breakpoint("large") {
@@ -64,7 +175,11 @@
   .category-content {
     padding-left: spacing("half");
   }
-
+  .category-header-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
   .category__header {
     align-items: baseline;
     display: flex;
@@ -97,8 +212,10 @@
   }
 
   .category__title {
-    font-size: $fontSize-largest;
     margin-bottom: 0;
+    display: inline-block;
+    font-size: remCalc(41px);
+    line-height: remCalc(50px);
     margin-right: spacing("third");
     margin-top: 0;
     padding: spacing("single") / 4.4 0;
@@ -136,7 +253,7 @@
       float: none;
       grid-column: 1;
       grid-row: 1 / span 5;
-      padding-right: spacing("half");
+      padding-right: 0;
       width: 100%;
     }
 
@@ -241,8 +358,19 @@
       }
     }
 
-    .navList {
-      margin-bottom: 0;
+    .sidebarBlock {
+      background: $color-grey1;
+      padding: 10px 15px;
+
+      > .navList {
+        margin-bottom: 0;
+
+        > .navList-item {
+          > a {
+            font-weight: $fontWeight-bold
+          }
+        }
+      }
     }
 
     .navList-item > ul {
@@ -251,7 +379,7 @@
 
     .navList-action {
       color: stencilColor("color-textBase");
-      font-size: $fontSize-smallest;
+      font-size: remCalc(17px);
 
       &:hover {
         color: stencilColor("color-textLink");
@@ -566,7 +694,7 @@
 
   .side-cart-enabled {
     @include breakpoint("large") {
-      padding-right: spacing("half");
+      padding-right: 20px;
       width: 70%;
     }
 
@@ -597,7 +725,7 @@
     padding: 0;
 
     @include breakpoint("medium") {
-      padding: 0 0 0 spacing("half");
+      padding: 0 0 0 20px;
     }
   }
 

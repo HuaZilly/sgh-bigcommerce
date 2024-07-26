@@ -71,8 +71,8 @@ $input-separator-bg: stencilColor("input-separator-bg");
     }
 
     .search-button {
-        background: $button-bg;
-        border: 1px solid $button-search-border__color;
+        background: $color-grey1;
+        border: 1px solid $color-grey2;
         bottom: 0;
         color: $button-color;
         font-size: remCalc(18px);
