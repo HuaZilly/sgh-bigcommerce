@@ -35,6 +35,9 @@ $card-outStock-color: stencilColor("card-outStockColor");
   &.card--blogPost {
     display: block;
   }
+  .card-section--availability {
+    display: none;
+  }
 
   .button--compare {
     color: stencilColor("color-textBase");

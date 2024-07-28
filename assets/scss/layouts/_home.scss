@@ -1,0 +1,13 @@
+body {
+  [data-brand-name="null"] {
+    display: none;
+  }
+}
+.is-home {
+  .page {
+    max-width: 100%;
+  }
+  .breadcrumbs{
+    display: none;
+  }
+}

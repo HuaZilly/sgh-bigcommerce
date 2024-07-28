@@ -52,6 +52,50 @@ export default class Global extends PageManager {
             $('.apple-pay-checkout-button').show();
         }
 
+        if (window.location.pathname === '/') {
+            $('body').addClass('is-home')
+        }
+
+        if ($('.slider-enabled').length > 0) {
+            let imageGroupSlider = $('.slider-enabled').find('.image-slider-container');
+            if (imageGroupSlider.length === 1) {
+                imageGroupSlider.slick({
+                    dots: false,
+                    infinite: false,
+                    slidesToScroll: 5,
+                    slidesToShow: 5,
+                    prevArrow: '<span class="slick-prev"></span>',
+                    nextArrow: '<span class="slick-next"></span>',
+                    responsive: [
+                        {
+                            breakpoint: 1260,
+                            settings: {
+                                slidesToScroll: 4,
+                                slidesToShow: 4,
+                                dots: true
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToScroll: 3,
+                                slidesToShow: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
+                            }
+                        }
+                    ]
+                });
+
+
+            }
+        }
+
         let topBanner = $('[data-content-region="above_header_banner--global"]'),
             topBannerHeight = 0;
         if (topBanner.length > 0) {
@@ -66,6 +110,54 @@ export default class Global extends PageManager {
         console.log(heroContainer);
         if(heroContainer.length > 0) {
             heroContainer.slick()
+        }
+
+        let productContainer = $('.product-container').find('.productCards');
+        if (productContainer.length > 0) {
+            productContainer.slick({
+                dots: false,
+                infinite: false,
+                slidesToScroll: 5,
+                slidesToShow: 5,
+                prevArrow: '<span class="slick-prev"></span>',
+                nextArrow: '<span class="slick-next"></span>',
+                responsive: [
+                {
+                    breakpoint: 1260,
+                    settings: {
+                        slidesToScroll: 4,
+                        slidesToShow: 4,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToScroll: 3,
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToScroll: 1,
+                        slidesToShow: 1,
+                    }
+                }
+            ]
+            });
+
+
+            productContainer.each(function (index, element) {
+                let productName = $(element).find('.productCard .card-title');
+
+                let productNameHeight = $(productName).map(function () {
+                    return $(this).height();
+                }).get();
+
+                productName.css('height',  Math.max.apply(null, productNameHeight))
+            })
+
         }
 
         function validateQuantity(quantityInput) {

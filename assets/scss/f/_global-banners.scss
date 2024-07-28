@@ -51,6 +51,13 @@ $section-title__line-height: 50px;
         }
     }
 
+    &.slider-enabled {
+        position: relative;
+        .image-slider-container {
+            width: 100%;
+        }
+    }
+
     .section-title {
         font-size: remCalc(20px);
         line-height: remCalc(32px);

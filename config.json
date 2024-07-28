@@ -1,5 +1,5 @@
 {
-  "name": "Camden B2B Edition - OQM validation by Flair (2.5) 26/7",
+  "name": "Camden B2B Edition - OQM validation by Flair (2.5) 26/7 (2)",
   "version": "1.10.2",
   "meta": {
     "price": 23500,
@@ -565,8 +565,7 @@
     "customer": {
       "addresses": true,
       "returns": true,
-      "wishlists": {
-      },
+      "wishlists": {},
       "orders": {
         "limit": 20
       },
@@ -595,8 +594,7 @@
           "home_garden"
         ]
       },
-      "images": {
-      },
+      "images": {},
       "settings": {
         "n": "Camden Hardware",
         "homepage_new_products_count": 0,
