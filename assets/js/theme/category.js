@@ -26,8 +26,6 @@ export default class Category extends CatalogPage {
 
         gridSwitcher(this.context);
 
-        $('body').addClass('is-category-page');
-
         this.highlightPageCount();
     }
 

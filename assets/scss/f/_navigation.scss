@@ -144,7 +144,7 @@ $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
     height: remCalc(30px);
     width: remCalc(30px);
     line-height: remCalc(30px);
-    margin-left: spacing("half")*1.5;
+    margin-left: 0;
 
     @include breakpoint("xlarge") {
         margin-left: spacing("third");

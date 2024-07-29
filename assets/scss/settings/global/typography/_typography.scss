@@ -48,6 +48,10 @@ $fontSize-xxl:                  33px;
 $fontSize-logo-large:           stencilNumber("logo_fontSize");
 $fontSize-logo-medium:          $fontSize-logo-large - 6px;
 $fontSize-logo-small:           $fontSize-logo-medium - 2px;
+$section-title__font-size:      remCalc(41px);
+$section-title__line-height:    remCalc(50px);
+$section-title__font-size_mobile: remCalc(20px);
+$section-title__line-height_mobile: remCalc(32px);
 
 
 // Line heights
@@ -92,6 +96,7 @@ $letterSpacing-smallest:        0.25px;
 $color-blue1: #1B2849;
 $color-grey1: #eeeff1;
 $color-grey2: #A4A9B6;
+$color-black1: #000000;
 
 // Form Variables
 

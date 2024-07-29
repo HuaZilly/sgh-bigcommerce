@@ -2,6 +2,18 @@
   .productCards--grid {
     .card {
       box-shadow: none;
+      @media screen and (max-width: 767px) {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+  @include breakpoint("medium") {
+    .section-title {
+      font-size: $section-title__font-size;
+      line-height: $section-title__line-height;
+      margin: 0;
+      padding: 50px 0;
     }
   }
 }

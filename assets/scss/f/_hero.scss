@@ -390,6 +390,7 @@ $hero-arrow-next: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 }
 .hero-banner-carousel {
     margin-bottom: 0;
+    overflow: hidden;
     .slick-arrow {
         opacity: 0;
     }
@@ -400,6 +401,8 @@ $hero-arrow-next: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     .text-inner {
         color: $color-white;
         margin: 0;
+        font-size: $section-title__font-size_mobile;
+        line-height: $section-title__line-height_mobile;
     }
     @include breakpoint("medium") {
         .text-inner {

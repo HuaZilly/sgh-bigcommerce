@@ -1,5 +1,6 @@
 
 .is-category-page {
+  margin-bottom: 20px;
   .body {
     background: $color-white;
   }
@@ -90,12 +91,18 @@
     color: $color-white;
     text-align: center;
     padding: 20px 20px 30px;
-    margin-top: 15px;
+    margin-top: 40px;
+    width: 100%;
     .block-title {
       font-size: remCalc(31px);
       line-height: remCalc(39px);
       font-weight: $fontWeight-semibold
     }
+
+    @include breakpoint("medium") {
+      margin-top: 15px
+    }
+
     a {
       background: $color-white;
       display: inline-block;
@@ -686,7 +693,7 @@
     display: flex;
     flex-flow: row wrap;
     width: 100%;
-
+    padding: 0;
     @include breakpoint("small") {
       padding: 0;
     }
@@ -712,6 +719,7 @@
       display: flex;
       flex-flow: row wrap;
       margin-bottom: -(spacing("single"));
+      justify-content: space-between;
     }
   }
 
@@ -735,11 +743,11 @@
     width: 100%;
 
     @include breakpoint(481px) {
-      width: 50%;
+      width: 48%;
     }
 
     @include breakpoint(769px) {
-      width: 33.33%;
+      width: 31.33%;
     }
 
     @include breakpoint("medium") {

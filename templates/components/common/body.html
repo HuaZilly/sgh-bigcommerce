@@ -1,4 +1,4 @@
-<div class="body {{#if page_type '===' 'product'}}body--product-page{{/if}}" data-currency-code="{{currency_selector.active_currency_code}}">
+<div class="body {{#if page_type '===' 'product'}}body--product-page{{/if}} {{#if page_type '===' 'category'}} is-category-page{{/if}}" data-currency-code="{{currency_selector.active_currency_code}}">
     {{#if page_type '===' 'category'}}
         <div class="container">
             {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}

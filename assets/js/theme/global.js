@@ -71,22 +71,21 @@ export default class Global extends PageManager {
                             breakpoint: 1260,
                             settings: {
                                 slidesToScroll: 4,
-                                slidesToShow: 4,
-                                dots: true
+                                slidesToShow: 4
                             }
                         },
                         {
                             breakpoint: 1024,
                             settings: {
                                 slidesToScroll: 3,
-                                slidesToShow: 3,
+                                slidesToShow: 3
                             }
                         },
                         {
                             breakpoint: 767,
                             settings: {
                                 slidesToScroll: 1,
-                                slidesToShow: 1,
+                                slidesToShow: 1
                             }
                         }
                     ]
@@ -127,7 +126,6 @@ export default class Global extends PageManager {
                     settings: {
                         slidesToScroll: 4,
                         slidesToShow: 4,
-                        dots: true
                     }
                 },
                 {

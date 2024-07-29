@@ -10,4 +10,11 @@ body {
   .breadcrumbs{
     display: none;
   }
+  [data-sub-layout] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .body {
+    margin-bottom: 0;
+  }
 }
