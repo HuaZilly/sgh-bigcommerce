@@ -1,6 +1,6 @@
 
 .is-category-page {
-  margin-bottom: 20px;
+  margin-bottom: 0;
   .body {
     background: $color-white;
   }
@@ -23,17 +23,76 @@
       font-weight: $fontWeight-semibold;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 800px) {
       flex-direction: column;
       align-items: flex-start;
       .filter-container {
         width: 100%;
-        .actionBar {
-
+        max-width: 250px;
+        .category-options {
+          display: block;
+        }
+      }
+      .filter-custom-group {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .facetedSearch-toggle {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 0;
+          max-width: 150px;
+          margin-left: 0;
+          padding: 10px;
+          @include buttonVariant("primary");
+          border-radius: 0;
+          svg {
+            position: static;
+            width: 20px;
+            height: 20px;
+            display: block;
+            fill: $color-white;
+          }
+          .facetedSearch-toggle-text {
+            margin-left: 10px;
+            font-weight: $fontWeight-semibold;
+            text-transform: uppercase;
+          }
         }
       }
       .category-title-container {
         margin-bottom: 30px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .category-options {
+        .actionBar-section {
+          display: block;
+
+          .form-label {
+            margin-right: 0;
+            font-size: $fontSize-button;
+            padding: 0;
+          }
+        }
+      }
+      .filter-custom-group {
+        align-items: stretch;
+        .facetedSearch-toggle {
+          max-width: 48%;
+          font-size: remCalc(18px);
+        }
+      }
+
+      .filter-container {
+        max-width: 48%;
+        .form-select {
+          padding: 7px 28px 7px 10px;
+          height: auto;
+          background-position: right 10px top 0;
+        }
       }
     }
   }
@@ -259,7 +318,7 @@
     @include breakpoint("medium") {
       float: none;
       grid-column: 1;
-      grid-row: 1 / span 5;
+      grid-row: 4 / span 5;
       padding-right: 0;
       width: 100%;
     }
@@ -331,8 +390,8 @@
 
     .facetedSearch-navList {
       @media screen and (max-width: 800px) {
-        background: stencilColor("color-greyLightest");
-        border: 1px solid stencilColor("color-greyLighter");
+        background: $color-grey1;
+        border: 1px solid $color-grey1;
         border-bottom: 0;
         left: 0;
         position: absolute;
@@ -341,7 +400,7 @@
 
         &::before {
           @include css-triangle(
-            $triangle-color: stencilColor("color-greyLighter"),
+            $triangle-color: $color-grey1,
             $triangle-direction: "bottom",
             $triangle-size: 10px
           );
@@ -353,7 +412,7 @@
 
         &::after {
           @include css-triangle(
-            $triangle-color: stencilColor("color-greyLightest"),
+            $triangle-color: $color-grey1,
             $triangle-direction: "bottom",
             $triangle-size: 8px
           );
@@ -720,6 +779,9 @@
       flex-flow: row wrap;
       margin-bottom: -(spacing("single"));
       justify-content: space-between;
+      @include breakpoint("medium") {
+        justify-content: flex-start;
+      }
     }
   }
 

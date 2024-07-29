@@ -10,6 +10,24 @@
         <span class="facetedSearch-toggle-text">{{lang 'search.faceted.filters'}}</span>
     </a>
 
+    <div class="filter-container">
+        <div class="category-options">
+            {{#if category.show_compare}}
+            <a class="button category-compare" style="display: none" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--alt"></span></a>
+            {{/if}}
+
+            {{> components/products/filter sort=pagination.category.sort}}
+
+            <div class="show-style">
+                {{#unless theme_settings.hide_product_count_on_category}}
+                {{> components/f/category/show-amount}}
+                {{/unless}}
+
+                {{> components/f/grid-list-switcher/switcher}}
+            </div>
+        </div>
+    </div>
+
     {{#any facets visible=true}}
         <div
             id="facetedSearch-navList"
