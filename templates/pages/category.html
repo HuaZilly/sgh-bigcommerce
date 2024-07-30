@@ -46,10 +46,10 @@ category:
         {{else}}
             {{#if theme_settings.show_subcategories_as_grid}}
                 {{#unless category.subcategories}}
-                    <p>{{lang 'categories.no_products'}}</p>
+                    <p class="no-product">{{lang 'categories.no_products'}}</p>
                 {{/unless}}
             {{else}}
-                <p>{{lang 'categories.no_products'}}</p>
+                <p class="no-product">{{lang 'categories.no_products'}}</p>
             {{/if}}
         {{/if}}
         <div class="looking-for-block mobile">

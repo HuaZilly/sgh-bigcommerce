@@ -7,6 +7,11 @@
         grid-column-gap: spacing("single");
         grid-template-columns: 2fr 1fr;
     }
+    .card {
+        .button {
+            max-width: 100%;
+        }
+    }
 
     &::before, &::after {
         display: none;

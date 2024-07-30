@@ -77,6 +77,10 @@ class FacetedSearch {
             }
         });
 
+        if ($('.no-product').length > 0) {
+            $(this.options.componentSelector).find(' > .accordion--navList').hide();
+        }
+
         // Collapse all facets if initially hidden
         // NOTE: Need to execute after Collapsible gets bootstrapped
         setTimeout(() => {

@@ -6,7 +6,7 @@ If you are making a change here or in price-range.html, you probably want to mak
 {{#and price.price_range (if theme_settings.price_ranges '==' true)}}
     {{> components/f/products/price-range price=price}}
 {{else}}
-        <div class="buy-section-price price-section"  style="display: none;">
+        <div class="buy-section-price price-section"{{#or price.rrp_with_tax price.rrp_without_tax}}{{else}} style="display: none;"{{/or}}>
             <div class="price-section--label">
                 {{theme_settings.pdp-retail-price-label}}:
             </div>
@@ -28,7 +28,7 @@ If you are making a change here or in price-range.html, you probably want to mak
                 {{/if}}
             </div>
         </div>
-        <div class="buy-section-price price-section" style="display: none;">
+        <div class="buy-section-price price-section" style="display: none;" {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}{{else}} style="display: none;"{{/or}}>
             <div class="price-section--label price--sale-label">
                 {{theme_settings.pdp-non-sale-price-label}}:
             </div>

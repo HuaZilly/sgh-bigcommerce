@@ -818,7 +818,6 @@ $card-outStock-color: stencilColor("card-outStockColor");
 
     .card-text--brand,
     .card-text--sku {
-      display: none;
 
       @include breakpoint("small") {
         display: inline-block;

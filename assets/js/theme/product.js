@@ -77,13 +77,12 @@ export default class Product extends PageManager {
 
             if (productImageStage.length > 0) {
                 imageStageWidth = productImageStage.width();
+                document.documentElement.style.setProperty('--description-width', imageStageWidth + 'px');
             }
             if (productImageNav.length > 0) {
                 imageNavWidth = productImageNav.width();
+                document.documentElement.style.setProperty('--description-margin-left', imageNavWidth + 'px');
             }
-
-            document.documentElement.style.setProperty('--description-width', imageStageWidth + 'px');
-            document.documentElement.style.setProperty('--description-margin-left', imageNavWidth + 'px');
         }
 
         window.addEventListener("resize", dynamicWidth);
@@ -98,6 +97,13 @@ export default class Product extends PageManager {
                 $(this).toggleClass('active');
                 $(this).closest('.productView-description').find('.content').toggle();
             })
+        }
+
+        let productInforContainer = $('.info-container');
+        if (productInforContainer.length > 0) {
+            if ($.trim(productInforContainer.text()) === '')  {
+                productInforContainer.hide();
+            }
         }
 
         let validator;

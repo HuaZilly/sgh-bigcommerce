@@ -46,7 +46,7 @@ brand:
 
     <div class="category-options">
         {{#if brand.show_compare}}
-            <a class="button category-compare" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--alt"></span></a>
+            <a class="button category-compare" style="display:none;" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--alt"></span></a>
         {{/if}}
         {{> components/products/filter sort=pagination.category.sort}}
         <div class="show-style">
@@ -62,7 +62,7 @@ brand:
             {{#if brand.products}}
                 {{> components/f/brand/product-listing settings=../settings}}
             {{else}}
-                <p>{{lang 'brands.no_products'}}</p>
+            <p class="no-product">{{lang 'brands.no_products'}}</p>
             {{/if}}
         </main>
         {{#if theme_settings.enable_side_cart}}
