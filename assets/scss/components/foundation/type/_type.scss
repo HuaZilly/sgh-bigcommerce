@@ -64,6 +64,11 @@ h6 {
     font-size: $h6-font-size;
 }
 
+b,
+strong {
+    font-weight: $fontWeight-semibold;
+}
+
 .definitionList {
     @include clearfix;
 }

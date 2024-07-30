@@ -4,7 +4,10 @@
   max-width: 1200px;
   min-width: auto;
   margin: auto;
+  &.no-log-in {
+    padding: 0 20px;
 
+  }
   @include breakpoint("medium") {
     min-width: 800px;
   }

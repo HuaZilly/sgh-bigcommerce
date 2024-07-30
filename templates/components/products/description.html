@@ -1,8 +1,8 @@
 {{#any product.description product.videos.list.length}}
-<article class="productView-description" id="productDescription">
+<article class="productView-description">
     <h2 class="productView-title">{{lang 'products.description'}}</h2>
     {{{region name="product_below_description_title"}}}
-    <div {{#if settings.data_tag_enabled}} data-event-type="product" {{/if}}>
+    <div class="content" style="display: none" {{#if settings.data_tag_enabled}} data-event-type="product" {{/if}}>
         {{{product.description}}}
         {{{snippet 'product_description'}}}
     </div>

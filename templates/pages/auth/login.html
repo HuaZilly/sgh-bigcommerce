@@ -1,7 +1,8 @@
 {{#partial "page"}}
     <div class="login">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-        
+        <div class="container">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
         <div class="account-container">
             <h1 class="page-heading">{{lang 'login.heading' }}</h1>
             {{#if forms.login.error}}

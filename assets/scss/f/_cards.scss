@@ -781,7 +781,7 @@ $card-outStock-color: stencilColor("card-outStockColor");
     }
 
     .card-section-rightWrapper--inner {
-      border-top: container("border");
+      border-top: none;
       display: block;
       padding-top: spacing("half");
     }

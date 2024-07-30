@@ -5,10 +5,10 @@
 {{/if}}
 {{#if theme_settings.show_product_quantity_box}}
     <div class="form-field form-field--increments">
-        <label class="form-label form-label--alternate" for="qty[]">{{lang 'products.quantity'}}</label>
+        <label class="form-label form-label--alternate" style="display: none" for="qty[]">{{lang 'products.quantity'}}</label>
 
         <div class="cart-add-container">
-            <div class="form-increment" data-quantity-change>
+            <div class="form-increment form-cardAdd" data-quantity-change>
                 <input class="form-input form-input--incrementTotal"
                        data-id="qty-{{product.id}}"
                        id="qty[]"
@@ -25,6 +25,17 @@
                        step="{{#filter product.custom_fields 'Order Quantity Multiple' property='name'}}{{trim value}}{{else}}1{{/filter}}"
                        pattern="{{#filter product.custom_fields 'Order Quantity Multiple' property='name'}}^[1-9][0-9]*{{trim value}}${{else}}[0-9]*{{/filter}}"
                        aria-live="polite">
+
+                {{#or customer (if theme_settings.restrict_to_login '===' 0)}}
+                    {{#and theme_settings.restrict_new_accounts (if customer_group_id '===' 0)}}
+                        {{else}}
+                        <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary button--cardAdd" type="submit"
+                               value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+                        {{> components/products/buy-now}}
+                    {{/and}}
+                    {{{snippet 'product_addtocart'}}}
+                {{/or}}
+
             </div>
 
             {{#if settings.bulk_discount_enabled}}
@@ -42,15 +53,4 @@
     </div>
     <p class="alertBox-column alertBox-message"></p>
 </div>
-{{#or customer (if theme_settings.restrict_to_login '===' 0)}}
-    {{#and theme_settings.restrict_new_accounts (if customer_group_id '===' 0)}}
-    {{else}}
-    <div class="form-action">
-        <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
-            value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
-    </div>
-    {{> components/products/buy-now}}
-    {{/and}}
-    {{{snippet 'product_addtocart'}}}
-{{/or}}
 </div>
