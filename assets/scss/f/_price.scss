@@ -46,6 +46,16 @@ $price-secondary-color: stencilColor("color-textSecondary");
 
   + abbr {
     color: $price-primary-color;
+    font-size: $fontSize-xxl;
+    text-transform: lowercase;
+  }
+}
+
+.price-section--wrapper {
+  div:not(.price-section--primary) {
+    font-weight: $fontWeight-semibold;
+    color: $color-grey2;
+    font-size: $fontSize-xsl;
   }
 }
 

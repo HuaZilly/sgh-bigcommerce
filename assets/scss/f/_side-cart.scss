@@ -35,7 +35,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
   &.mobile-mode {
     .side-cart-container {
       display: block;
-      max-height: 85vh;
+      max-height: initial;
     }
 
     .side-cart-content {

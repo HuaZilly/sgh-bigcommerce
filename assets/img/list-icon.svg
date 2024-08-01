@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <symbol viewBox="0 0 24 24" id="icon-add">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+    </symbol>
+
+
+    <symbol id="Component_49_3" width="49.936" height="46.828" viewBox="0 0 49.936 46.828">
+<!--        <defs>-->
+<!--            <clipPath id="clip-path">-->
+<!--                <rect id="Rectangle_213" data-name="Rectangle 213" width="49.936" height="46.828" transform="translate(-3 -4)" stroke-width="3"/>-->
+<!--            </clipPath>-->
+<!--        </defs>-->
+        <g id="Group_235" data-name="Group 235" transform="translate(3 4)" clip-path="url(#clip-path)">
+            <path id="Path_259" data-name="Path 259" d="M32.4,22.071H66.458a1.707,1.707,0,0,1,1.677,2.014l-2.36,12.908a3.449,3.449,0,0,1-3.146,2.818l-25.262,1.8" transform="translate(-24.703 -16.829)"  stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+            <path id="Path_260" data-name="Path 260" d="M41.268,30.127h-22.9a4.317,4.317,0,0,1-3.943-2.89L8.723,4.822A3.743,3.743,0,0,0,5.1,2H2" transform="translate(-1.525 -1.525)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+            <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.743" cy="2.747" rx="2.743" ry="2.747" transform="translate(17.454 31.86)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+            <path id="Path_261" data-name="Path 261" d="M133.465,136.9a2.743,2.743,0,1,1-2.743-2.747A2.745,2.745,0,0,1,133.465,136.9Z" transform="translate(-97.585 -102.29)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+        </g>
+    </symbol>
+
+</svg>

@@ -31,21 +31,21 @@
         <ul>
             <li>
                 <a href="/account.php?action=order_status" alt="Icon 1">
-                    <img src="{{cdn 'img/header/icon-1.svg' }}"  alt="Icon" width="50" height="46" />
+                    <img src="{{cdn 'img/header/icon-1.svg' }}" data-hover-src="{{cdn 'img/header/order-hover.svg' }}"  alt="Icon" width="50" height="46" />
                 </a>
             </li>
             <li>
                 <a href="/shopping-lists/" alt="Icon 2">
-                    <img src="{{cdn 'img/header/icon-2.svg' }}"  alt="Icon" width="40" height="43" />
+                    <img src="{{cdn 'img/header/icon-2.svg' }}" data-hover-src="{{cdn 'img/header/shopping-list-hover.svg' }}"  alt="Icon" width="40" height="43" />
                 </a>
             </li>
             <li>
                 <a href="/buy-again/" alt="Icon 3">
-                    <img src="{{cdn 'img/header/icon-3.svg' }}"  alt="Icon" width="50" height="46" />
+                    <img src="{{cdn 'img/header/icon-3.svg' }}" data-hover-src="{{cdn 'img/header/clock-hover.svg' }}"  alt="Icon" width="50" height="46" />
                 </a>
             </li>
             <li>
-                <a href="/wishlist.php" alt="Icon 4">
+                <a href="/invoices" alt="Icon 4">
                     <img src="{{cdn 'img/header/invoice.png' }}"  alt="Icon" width="40" height="42" />
                 </a>
             </li>
@@ -94,9 +94,17 @@
       {{> components/f/header/nav-utilities}}
     </div>
   </div>
-  
+  <div class="icons-preload" style="display: none">
+      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/support-hover.svg' }}" />
+      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/shopping-list-hover.svg' }}" />
+      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/clock-hover.svg' }}" />
+      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/cart-hover.svg' }}" />
+      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/account-hover.svg' }}" />
+      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/faq-hover.svg' }}" />
+      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/order-hover.svg' }}" />
+  </div>
  <script type="text/javascript" async>
- 
+
 
 function customerJWT(apiAccountClientId='dl7c39mdpul6hyc489yk0vzxl6jesyx'){
    

@@ -293,6 +293,12 @@ $card-outStock-color: stencilColor("card-outStockColor");
   margin-top: auto;
 }
 
+.productCards--grid {
+  .slick-list {
+    padding-bottom: 60px;
+  }
+}
+
 .form-cardAdd {
   align-items: baseline;
   display: inline-flex;
@@ -303,6 +309,23 @@ $card-outStock-color: stencilColor("card-outStockColor");
   vertical-align: middle;
   margin-bottom: 0;
   width: 100%;
+  max-width: 185px;
+  &:hover,
+  &:active,
+  &:focus {
+    input {
+      border-color: $button-color-hover;
+    }
+  }
+  &.hovering {
+    input {
+      border-color: $button-color-hover;
+    }
+    .button--cardAdd {
+      background: stencilColor('button--primary-backgroundColorHover');
+      color: stencilColor('button--primary-colorHover');
+    }
+  }
 }
 
 .form-remove {
@@ -344,7 +367,7 @@ $card-outStock-color: stencilColor("card-outStockColor");
   padding: 3px;
   text-align: center;
   vertical-align: top;
-  border-width: 2px;
+  border-width: 1px;
   width: remCalc(48);
   border-right: 0;
   font-weight: $fontWeight-semibold;
@@ -781,7 +804,7 @@ $card-outStock-color: stencilColor("card-outStockColor");
     }
 
     .card-section-rightWrapper--inner {
-      border-top: container("border");
+      border-top: none;
       display: block;
       padding-top: spacing("half");
     }
@@ -818,7 +841,6 @@ $card-outStock-color: stencilColor("card-outStockColor");
 
     .card-text--brand,
     .card-text--sku {
-      display: none;
 
       @include breakpoint("small") {
         display: inline-block;

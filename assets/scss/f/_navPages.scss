@@ -73,7 +73,7 @@
 	&.is-open {
 		padding-bottom: 0;
 		margin-bottom: spacing("half");
-		border-bottom: 1px solid $navPages-list--user-borderColor;
+		border-bottom: 0;
 
 		.navPages-list--user & {
 			padding-bottom: spacing("third");
@@ -180,7 +180,7 @@
 		color: $header-bottom-nav-dropdown-color;
 
 		&.is-open {
-			padding-bottom: 0;
+			padding-bottom: 5px;
 			border: none;
 			opacity: 1;
 			font-weight: $fontWeight-bold;
