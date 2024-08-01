@@ -174,7 +174,11 @@
       text-decoration: none;
       text-transform: uppercase;
       margin-top: 15px;
-      font-weight: $fontWeight-semibold
+      font-weight: $fontWeight-semibold;
+      &:hover {
+        background: stencilColor("color-textBase--hover");
+        color: stencilColor("color-primary");
+      }
     }
 
     &.desktop {
