@@ -234,7 +234,7 @@
   display: inline-block;
   font-size: $fontSize-button;
   font-weight: $fontWeight-semibold;
-  border: 2px solid stencilColor("color-primary");
+  border: 1px solid stencilColor("color-primary");
   border-right: none;
   height: auto;
   padding: 0;

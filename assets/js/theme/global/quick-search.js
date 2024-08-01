@@ -53,9 +53,9 @@ export default function () {
 
     utils.hooks.on('search-quick', (event, currentTarget) => {
         // Don't use quick search for mobiles
-        if (/Mobi/i.test(navigator.userAgent)) {
-            return;
-        }
+        // if (/Mobi/i.test(navigator.userAgent)) {
+        //     return;
+        // }
 
         const searchQuery = $(currentTarget).val();
 

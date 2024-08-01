@@ -320,6 +320,21 @@ export default class Global extends PageManager {
         };
         /* BundleB2B */
 
+        // let logoList = $('.header [data-hover-src]');
+        // if (logoList.length > 0) {
+        //     logoList.each(function (index, element) {
+        //         $(element).attr('data-current-src', $(element).attr('src'));
+        //
+        //         $(element).on('mouseover', function () {
+        //             $(this).attr('src', $(this).attr('data-hover-src'));
+        //         });
+        //         $(element).on('mouseleave', function () {
+        //             $(this).attr('src', $(this).attr('data-current-src'));
+        //         });
+        //     })
+        // }
+
+
         let jsContext = this.context,
             maxRewardKey = jsContext.secretKey,
             maxRewardBaseUrl = jsContext.maxRewardBaseUrl,
@@ -346,12 +361,18 @@ export default class Global extends PageManager {
         function calculateDate() {
             let theDate = new Date;
 
-            return [theDate.getDate().padLeft(),
-                    (theDate.getMonth() + 1).padLeft(),
-                    theDate.getFullYear()].join('-') + '-' +
-                    [theDate.getHours().padLeft(),
-                    theDate.getMinutes().padLeft(),
-                    theDate.getSeconds().padLeft()].join('-');
+            // return [theDate.getUTCDate(),
+            //         (theDate.getMonth() + 1).padLeft(),
+            //         theDate.getFullYear()].join('-') + '-' +
+            //         [theDate.getHours().padLeft(),
+            //         theDate.getMinutes().padLeft(),
+            //         theDate.getSeconds().padLeft()].join('-');
+            return (theDate.getUTCDate()).padLeft() + '-'
+                + (theDate.getUTCMonth() + 1).padLeft() + '-'
+                + theDate.getUTCFullYear() + '-'
+                + (theDate.getUTCHours()).padLeft() + '-'
+                + (theDate.getUTCMinutes()).padLeft() + '-'
+                + (theDate.getUTCSeconds()).padLeft();
 
         }
 
@@ -391,8 +412,24 @@ export default class Global extends PageManager {
                     }
                     let timeStamp = calculateDate(),
                         hasDigest = sha384(customerEmail + timeStamp),
-                        hmacDigest = Base64.stringify(hmacSHA384(maxRewardKey, hasDigest));
+                        hmacDigest = hmacSHA384(hasDigest, maxRewardKey).toString();
 
+                    const text = hasDigest;
+
+                    async function digestMessage(message) {
+                        const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
+                        const hashBuffer = await window.crypto.subtle.digest("SHA-384", msgUint8); // hash the message
+                        const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
+                        const hashHex = hashArray
+                            .map((b) => b.toString(16).padStart(2, "0"))
+                            .join(""); // convert bytes to hex string
+                        return hashHex;
+                    }
+
+                    digestMessage(text).then((digestHex) => console.log(digestHex))
+                    console.log(hasDigest);
+                    console.log(hmacDigest);
+                    // return ;
                     return {
                         token,
                         hmacDigest,

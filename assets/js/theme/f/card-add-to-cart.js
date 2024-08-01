@@ -62,6 +62,8 @@ export default function () {
             .val(waitMessage)
             .prop('disabled', true);
 
+        $addToCartBtn.closest('.form-cardAdd').addClass('hovering');
+
         // Add item to cart
         utils.api.cart.itemAdd(new FormData(form), (err, response) => {
             const errorMessage = err || response.data.error;
@@ -69,10 +71,12 @@ export default function () {
             $addToCartBtn
                 .val(originalBtnVal)
                 .prop('disabled', false);
-
+            $addToCartBtn.closest('.form-cardAdd').removeClass('hovering')
             // Guard statement
             if (errorMessage) {
                 popup(event.target, errorMessage, 4000);
+                console.log(response.data)
+                window.location.replace(response.data.data.url);
             } else {
                 // To add lang string
                 popup(event.target, 'Item added', 2000);
@@ -95,5 +99,13 @@ export default function () {
 
     $('[data-cart-item-add-from-card]').on('submit', (event) => {
         addProductToCart(event, event.target);
+    });
+
+    $('.form-input').on('mouseover', function () {
+        $(this).closest('.form-cardAdd').addClass('hovering');
+    });
+
+    $('.form-input').on('mouseleave', function () {
+        $(this).closest('.form-cardAdd').removeClass('hovering');
     });
 }

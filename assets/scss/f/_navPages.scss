@@ -180,7 +180,7 @@
 		color: $header-bottom-nav-dropdown-color;
 
 		&.is-open {
-			padding-bottom: 0;
+			padding-bottom: 5px;
 			border: none;
 			opacity: 1;
 			font-weight: $fontWeight-bold;

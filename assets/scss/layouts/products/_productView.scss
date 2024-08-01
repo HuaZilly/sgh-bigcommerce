@@ -39,7 +39,7 @@
   @include breakpoint("medium") {
     clear: right;
     float: right;
-    width: grid-calc(6, $total-columns);
+    width: 30%
   }
 }
 
