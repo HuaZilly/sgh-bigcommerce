@@ -375,7 +375,7 @@ export default class Global extends PageManager {
             e.preventDefault();
 
             $('.max-reward-link').removeClass('.non-logged-in');
-            
+
             let bearTokenData = {
                 "username": maxRewardBearTokenUser,
                 "password": maxRewardBearTokenPassword
@@ -463,5 +463,64 @@ export default class Global extends PageManager {
                 console.log(error)
             })
         }
+
+
+
+
+        function customerJWT(apiAccountClientId='dl7c39mdpul6hyc489yk0vzxl6jesyx'){
+            const options = {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            let resource = `/customer/current.jwt?app_client_id=${apiAccountClientId}`;
+            return fetch(resource,options)
+                .then(jwt => jwt.json())
+                .then(jwt => {
+                    console.log(jwt); // JWT here
+
+                    const token = jwt.token;
+                    const encodedPayload = token.split('.')[1];
+                    const decodedPayload = JSON.parse(atob(encodedPayload));
+
+                    console.log('Decoded JWT Payload:', decodedPayload);
+
+                    // Example usage: Access decoded properties
+                    const customerId = decodedPayload.customer.id;
+                    const storehash = decodedPayload.store_hash;
+                    const companyId = decodedPayload.customer.group_id;
+
+
+
+                    const settings = {
+                        async: true,
+                        crossDomain: true,
+                        method: 'GET',
+                        headers: {
+                            Accept: 'application/json, 200-Response-IncludeExtraFields, 200-Standard Response',
+                            authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdG9yZV9oYXNoIjoiOHJxMHozb2hyayIsImRiIjoiZGVmYXVsdCIsImVtYWlsIjoic3VwcG9ydEBiYWxhbmNlaW50ZXJuZXQuY29tLmF1IiwibmFtZSI6IkJhbGFuY2UiLCJldmVudF9jaGFubmVsIjoiYXBwIiwidG9rZW5fdmVyc2lvbiI6InYzIn0.zsuPYEIj6A68UeorS9fQYXGIRYLAHh1zicYL96hlQRU'
+                        }
+                    };
+
+
+                    fetch('https://api-b2b.bigcommerce.com/api/v3/io/companies?isIncludeExtraFields=1&bcGroupId=18', settings)
+                        .then(response => response.json())
+                        .then(response => {
+                            console.log(response)
+                            let data = response.data[0],
+                                extraField = data.extraFields[0],
+                                customerCode = extraField.fieldValue;
+                            if (customerCode.length > 0) {
+
+                            }
+                        })
+
+
+                });
+        }
+        customerJWT();
     }
 }

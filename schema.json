@@ -23,11 +23,10 @@
   {
     "name": "Max Reward Integration",
     "settings": [
+
       {
-        "type": "text",
-        "label": "Secret Key",
-        "force_reload": true,
-        "id": "max_reward_secret_key"
+        "type": "heading",
+        "content": "Menu link & label"
       },
       {
         "type": "text",
@@ -37,15 +36,35 @@
       },
       {
         "type": "text",
+        "label": "Menu Label",
+        "force_reload": true,
+        "id": "max_reward_menu_label"
+      },
+      {
+        "type": "heading",
+        "content": "Max Rewards Information"
+      },
+      {
+        "type": "text",
         "label": "Max Reward API",
         "force_reload": true,
         "id": "max_reward_base_url"
       },
       {
         "type": "text",
-        "label": "Menu Label",
+        "label": "Generate SSO KEY URL",
         "force_reload": true,
-        "id": "max_reward_menu_label"
+        "id": "max_reward_generate_ssokey_url"
+      },
+      {
+        "type": "text",
+        "label": "Secret Key",
+        "force_reload": true,
+        "id": "max_reward_secret_key"
+      },
+      {
+        "type": "heading",
+        "content": "Max Rewards Bear Token Information"
       },
       {
         "type": "text",
@@ -66,10 +85,46 @@
         "id": "max_reward_bear_token_password"
       },
       {
+        "type": "heading",
+        "content": "Customer Points Balance & Pending Points"
+      },
+      {
         "type": "text",
-        "label": "Generate SSO KEY URL",
+        "label": "API Account client ID",
         "force_reload": true,
-        "id": "max_reward_generate_ssokey_url"
+        "id": "api_account_client_Id"
+      },
+      {
+        "type": "text",
+        "label": "B2B API URL",
+        "force_reload": true,
+        "id": "b2b_api_url"
+      },
+      {
+        "type": "text",
+        "label": "Customer Points API",
+        "force_reload": true,
+        "id": "customer_points_api"
+      },
+      {
+        "type": "heading",
+        "content": "Enable Test Mode"
+      },
+      {
+        "type": "select",
+        "label": "Primary price",
+        "force_reload": true,
+        "id": "enabled_test_mode",
+        "options": [
+          {
+            "value": "true",
+            "label": "True"
+          },
+          {
+            "value": "false",
+            "label": "False"
+          }
+        ]
       }
     ]
   },
