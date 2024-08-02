@@ -20,8 +20,7 @@ import cardAddToCart from './f/card-add-to-cart';
 import hoverNavigation from './f/hover-navigation';
 import validity from './f/check-validity';
 import hmacSHA384 from 'crypto-js/hmac-sha384';
-import sha384 from 'crypto-js/sha384';
-import Base64 from 'crypto-js/enc-base64';
+import Encrypt from 'crypto-js/enc-hex';
 import swal from './global/sweet-alert';
 
 export default class Global extends PageManager {
@@ -342,10 +341,10 @@ export default class Global extends PageManager {
             maxRewardBearTokenUser = jsContext.bearTokenUser,
             maxRewardBearTokenPassword = jsContext.bearTokenPassword,
             maxRewardGenerateSsoKeyAPI = maxRewardBaseUrl + jsContext.generateSsoKeyAPI,
-            maxRewardLink = document.querySelector('.max-reward-link a');
+            maxRewardLink = $('.max-reward-link a');
 
 
-        if (maxRewardLink && jsContext.customer !== null) {
+        if (maxRewardLink.length > 0 && jsContext.customer !== null) {
             window.addEventListener('load', generateSsoKey);
         }
 
@@ -354,30 +353,21 @@ export default class Global extends PageManager {
             return len > 0 ? new Array(len).join(chr || '0')+this : this;
         }
 
-        function generateDatabaseDateTime(date) {
-            return date.toISOString().replace("T"," ").substring(0, 19);
-        }
-
         function calculateDate() {
             let theDate = new Date;
 
-            // return [theDate.getUTCDate(),
-            //         (theDate.getMonth() + 1).padLeft(),
-            //         theDate.getFullYear()].join('-') + '-' +
-            //         [theDate.getHours().padLeft(),
-            //         theDate.getMinutes().padLeft(),
-            //         theDate.getSeconds().padLeft()].join('-');
             return (theDate.getUTCDate()).padLeft() + '-'
-                + (theDate.getUTCMonth() + 1).padLeft() + '-'
-                + theDate.getUTCFullYear() + '-'
-                + (theDate.getUTCHours()).padLeft() + '-'
-                + (theDate.getUTCMinutes()).padLeft() + '-'
-                + (theDate.getUTCSeconds()).padLeft();
-
+                    + (theDate.getUTCMonth() + 1).padLeft() + '-'
+                    + theDate.getUTCFullYear() + '-'
+                    + (theDate.getUTCHours()).padLeft() + '-'
+                    + (theDate.getUTCMinutes()).padLeft() + '-'
+                    + (theDate.getUTCSeconds()).padLeft();
         }
 
         function generateSsoKey(e) {
+            
             e.preventDefault();
+            
             let bearTokenData = {
                 "username": maxRewardBearTokenUser,
                 "password": maxRewardBearTokenPassword
@@ -393,6 +383,7 @@ export default class Global extends PageManager {
                 .then(response => response.json())
                 .then(response => {
                     // Get Bear Token
+                    
                     if (response.token) {
                         return response.token;
                     }
@@ -410,26 +401,12 @@ export default class Global extends PageManager {
                         console.error('No email found');
                         return;
                     }
+
+                    //Generate hmacSHA384 token
+
                     let timeStamp = calculateDate(),
-                        hasDigest = sha384(customerEmail + timeStamp),
-                        hmacDigest = hmacSHA384(hasDigest, maxRewardKey).toString();
+                        hmacDigest = Encrypt.stringify(hmacSHA384(customerEmail + timeStamp, maxRewardKey));
 
-                    const text = hasDigest;
-
-                    async function digestMessage(message) {
-                        const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
-                        const hashBuffer = await window.crypto.subtle.digest("SHA-384", msgUint8); // hash the message
-                        const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
-                        const hashHex = hashArray
-                            .map((b) => b.toString(16).padStart(2, "0"))
-                            .join(""); // convert bytes to hex string
-                        return hashHex;
-                    }
-
-                    digestMessage(text).then((digestHex) => console.log(digestHex))
-                    console.log(hasDigest);
-                    console.log(hmacDigest);
-                    // return ;
                     return {
                         token,
                         hmacDigest,
@@ -439,7 +416,9 @@ export default class Global extends PageManager {
 
                 }).then(response => {
                     if (response.hmacDigest) {
+
                         console.log('has digest sha384');
+
                         let bearToken = "Bearer " + response.token,
                             authParams = {
                                 "authParams": {
@@ -460,10 +439,16 @@ export default class Global extends PageManager {
                         };
 
                         fetch(maxRewardGenerateSsoKeyAPI, options)
+                            .then(response => response.json())
                             .then(response => {
-                                console.log(2)
-                                console.log(response)
-                            })
+                                if (response.message === 'Success') {
+                                    $('.max-reward-link').show();
+                                    let maxRewardUrl = maxRewardLink.attr('href');
+                                    maxRewardLink.attr('target', '_blank');
+                                    maxRewardLink.attr('href', maxRewardUrl.replace('ssovalue', response.data.ssokey));
+                                    console.log('SSO key generated')
+                                }
+                            });
                     } else {
                         console.error('No digest hmac key');
                     }
