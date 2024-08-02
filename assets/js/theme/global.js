@@ -341,11 +341,17 @@ export default class Global extends PageManager {
             maxRewardBearTokenUser = jsContext.bearTokenUser,
             maxRewardBearTokenPassword = jsContext.bearTokenPassword,
             maxRewardGenerateSsoKeyAPI = maxRewardBaseUrl + jsContext.generateSsoKeyAPI,
+            maxRewardMenuLink = jsContext.maxRewardsMenuLink,
             maxRewardLink = $('.max-reward-link a');
 
 
         if (maxRewardLink.length > 0 && jsContext.customer !== null) {
             window.addEventListener('load', generateSsoKey);
+        }
+        else {
+            maxRewardLink.on('click', function (e) {
+                e.preventDefault();
+            })
         }
 
         Number.prototype.padLeft = function(base, chr){
@@ -367,6 +373,8 @@ export default class Global extends PageManager {
         function generateSsoKey(e) {
             
             e.preventDefault();
+
+            $('.max-reward-link').removeClass('.non-logged-in');
             
             let bearTokenData = {
                 "username": maxRewardBearTokenUser,
@@ -442,10 +450,9 @@ export default class Global extends PageManager {
                             .then(response => response.json())
                             .then(response => {
                                 if (response.message === 'Success') {
-                                    $('.max-reward-link').show();
-                                    let maxRewardUrl = maxRewardLink.attr('href');
+                                    $('.max-reward-link').css('pointer-events', 'auto');
                                     maxRewardLink.attr('target', '_blank');
-                                    maxRewardLink.attr('href', maxRewardUrl.replace('ssovalue', response.data.ssokey));
+                                    maxRewardLink.attr('href', maxRewardMenuLink.replace('ssovalue', response.data.ssokey));
                                     console.log('SSO key generated')
                                 }
                             });

@@ -118,11 +118,11 @@
 
 	&--account {
 		.dropdown-menu[class]:before {
-			right: 0;
+			right: remCalc(9px);
 		}
 
 		.dropdown-menu[class]:after {
-			right: remCalc(1px);
+			right: remCalc(10px);
 		}
 	}
 

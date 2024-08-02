@@ -75,11 +75,11 @@
 
         {{> components/f/header/header-cart}}
     </ul>
-    {{#if customer}}
-        <span class="navUser-item navUser-item--max-rewards">
-                <a href="/">
+    {{#and theme_settings.max_reward_menu_link theme_settings.max_reward_menu_label }}
+        <span class="navUser-item navUser-item--max-rewards max-reward-link non-logged-in">
+                <a href="{{theme_settings.max_reward_menu_link}}" alt="Max Reward">
                     <img src="{{cdn 'img/header/max-rewards.png' }}" width="100" height="100" alt="Max Rewards Image" />
                 </a>
         </span>
-    {{/if}}
+    {{/and}}
 </nav>

@@ -161,6 +161,9 @@ body {
             @include breakpoint("medium") {
                 top: -30px;
                 right: 0;
+                &.non-logged-in {
+                    top: -70px;
+                }
             }
 
             img {
