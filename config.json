@@ -1,5 +1,5 @@
 {
-  "name": "Camden B2B Edition - OQM validation by Flair 2/8",
+  "name": "Camden B2B Edition - OQM validation by Flair 6/8",
   "version": "1.10.2",
   "meta": {
     "price": 23500,
@@ -545,7 +545,6 @@
     "max_reward_bear_token_url": "Authentication/v1/Login",
     "max_reward_generate_ssokey_url": "Authentication/v1/SingleSignOn/GenerateKey",
     "api_account_client_id": "dl7c39mdpul6hyc489yk0vzxl6jesyx",
-    "b2b_api": "https://api-b2b.bigcommerce.com/api/v3/io/companies?isIncludeExtraFields=1&bcGroupId=",
     "customer_points_api": "https://api.maxrewards.lori.works/api/stealth/v1/",
     "enabled_test_mode": true
   },
@@ -569,8 +568,7 @@
     "customer": {
       "addresses": true,
       "returns": true,
-      "wishlists": {
-      },
+      "wishlists": {},
       "orders": {
         "limit": 20
       },
@@ -599,8 +597,7 @@
           "home_garden"
         ]
       },
-      "images": {
-      },
+      "images": {},
       "settings": {
         "n": "Camden Hardware",
         "homepage_new_products_count": 0,

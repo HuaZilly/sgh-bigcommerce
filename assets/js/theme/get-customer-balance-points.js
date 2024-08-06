@@ -3,7 +3,6 @@ export default function (jsContext, maxRewardBearTokenUrl, bearOptions) {
     let apiAccountClientId = jsContext.apiAccountClientId,
         customerPointsApi = jsContext.customerPointsApi,
         enabledTestMode = jsContext.enabledTestMode,
-        b2bApi = jsContext.b2bApi,
         testModeToken = $('#test_mode_token');
 
     let options = {
@@ -46,7 +45,7 @@ export default function (jsContext, maxRewardBearTokenUrl, bearOptions) {
             };
 
 
-            fetch(b2bApi + customerGroupId, settings)
+            fetch('https://api-b2b.bigcommerce.com/api/v3/io/companies?isIncludeExtraFields=1&bcGroupId=' + customerGroupId, settings)
                 .then(response => response.json())
                 .then(response => {
 

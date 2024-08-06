@@ -96,12 +96,6 @@
       },
       {
         "type": "text",
-        "label": "B2B API URL",
-        "force_reload": true,
-        "id": "b2b_api"
-      },
-      {
-        "type": "text",
         "label": "Customer Points API",
         "force_reload": true,
         "id": "customer_points_api"
