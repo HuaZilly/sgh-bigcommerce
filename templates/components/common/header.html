@@ -104,7 +104,28 @@
       <img alt="icon" width="40" height="40" src="{{cdn 'img/header/order-hover.svg' }}" />
   </div>
 
-  
+
+{{#if customer}}
+    {{inject "apiAccountClientId" theme_settings.api_account_client_id}}
+    {{inject "b2bApi" theme_settings.b2b_api}}
+    {{inject "customerPointsApi" theme_settings.customer_points_api}}
+    {{inject "enabledTestMode" theme_settings.enabled_test_mode}}
+    {{inject "b2bAuthToken" theme_settings.b2b_auth_token}}
+
+    {{inject "maxRewardBaseUrl" theme_settings.max_reward_base_url}}
+    {{inject "secretKey" theme_settings.max_reward_secret_key}}
+    {{inject "bearTokenUrl" theme_settings.max_reward_bear_token_url}}
+    {{inject "bearTokenUser" theme_settings.max_reward_bear_token_user}}
+    {{inject "bearTokenPassword" theme_settings.max_reward_bear_token_password}}
+    {{inject "generateSsoKeyAPI" theme_settings.max_reward_generate_ssokey_url}}
+    {{inject "maxRewardsMenuLink" theme_settings.max_reward_menu_link}}
+
+{{/if}}
+
+{{#if theme_settings.enabled_test_mode }}
+    <input type="hidden" id="test_mode_token" data-group-id="18" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdG9yZV9oYXNoIjoiOHJxMHozb2hyayIsImRiIjoiZGVmYXVsdCIsImVtYWlsIjoic3VwcG9ydEBiYWxhbmNlaW50ZXJuZXQuY29tLmF1IiwibmFtZSI6IkJhbGFuY2UiLCJldmVudF9jaGFubmVsIjoiYXBwIiwidG9rZW5fdmVyc2lvbiI6InYzIn0.zsuPYEIj6A68UeorS9fQYXGIRYLAHh1zicYL96hlQRU">
+{{/if}}
+
 
 
 </header>

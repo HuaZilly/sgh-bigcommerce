@@ -538,12 +538,16 @@
     "stack_product_description": false,
     "max_reward_secret_key": "aEu1jE%9HVjfOC1hM!ZOKlJ%OfmgYT7N4$rPWH83IHd^XtL8",
     "max_reward_menu_label": "Max Rewards",
-    "max_reward_bear_token_user": "stealthapi",
-    "max_reward_bear_token_password": "9^S@j0Ro3LSYyaID",
+    "max_reward_bear_token_user": "maxtest1",
+    "max_reward_bear_token_password": "M@xR3ward5",
     "max_reward_base_url": "https://api.maxrewards.lori.works/api/",
     "max_reward_menu_link": "https://maxrewards.lori.works/service/ssoLogin?ssokey=ssovalue",
     "max_reward_bear_token_url": "Authentication/v1/Login",
-    "max_reward_generate_ssokey_url": "Authentication/v1/SingleSignOn/GenerateKey"
+    "max_reward_generate_ssokey_url": "Authentication/v1/SingleSignOn/GenerateKey",
+    "api_account_client_id": "dl7c39mdpul6hyc489yk0vzxl6jesyx",
+    "b2b_api": "https://api-b2b.bigcommerce.com/api/v3/io/companies?isIncludeExtraFields=1&bcGroupId=",
+    "customer_points_api": "https://api.maxrewards.lori.works/api/stealth/v1/",
+    "enabled_test_mode": true
   },
   "read_only_files": [
     "/assets/scss/components/citadel",

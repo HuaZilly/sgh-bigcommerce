@@ -21,6 +21,8 @@ import hoverNavigation from './f/hover-navigation';
 import validity from './f/check-validity';
 import hmacSHA384 from 'crypto-js/hmac-sha384';
 import Encrypt from 'crypto-js/enc-hex';
+import getCustomerBalancePoints from "./get-customer-balance-points";
+import getSSOKey from "./get-sso-key"
 import swal from './global/sweet-alert';
 
 export default class Global extends PageManager {
@@ -335,192 +337,28 @@ export default class Global extends PageManager {
 
 
         let jsContext = this.context,
-            maxRewardKey = jsContext.secretKey,
             maxRewardBaseUrl = jsContext.maxRewardBaseUrl,
             maxRewardBearTokenUrl = maxRewardBaseUrl + jsContext.bearTokenUrl,
             maxRewardBearTokenUser = jsContext.bearTokenUser,
-            maxRewardBearTokenPassword = jsContext.bearTokenPassword,
-            maxRewardGenerateSsoKeyAPI = maxRewardBaseUrl + jsContext.generateSsoKeyAPI,
-            maxRewardMenuLink = jsContext.maxRewardsMenuLink,
-            maxRewardLink = $('.max-reward-link a');
+            maxRewardBearTokenPassword = jsContext.bearTokenPassword;
 
 
-        if (maxRewardLink.length > 0 && jsContext.customer !== null) {
-            window.addEventListener('load', generateSsoKey);
-        }
-        else {
-            maxRewardLink.on('click', function (e) {
-                e.preventDefault();
-            })
-        }
+        let bearTokenData = {
+            "username": maxRewardBearTokenUser,
+            "password": maxRewardBearTokenPassword
+        };
 
-        Number.prototype.padLeft = function(base, chr){
-            let  len = (String(base || 10).length - String(this).length) + 1;
-            return len > 0 ? new Array(len).join(chr || '0')+this : this;
-        }
+        let bearOptions = {
+            method: 'POST',
+            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+            body: JSON.stringify(bearTokenData)
+        };
 
-        function calculateDate() {
-            let theDate = new Date;
-
-            return (theDate.getUTCDate()).padLeft() + '-'
-                    + (theDate.getUTCMonth() + 1).padLeft() + '-'
-                    + theDate.getUTCFullYear() + '-'
-                    + (theDate.getUTCHours()).padLeft() + '-'
-                    + (theDate.getUTCMinutes()).padLeft() + '-'
-                    + (theDate.getUTCSeconds()).padLeft();
-        }
-
-        function generateSsoKey(e) {
-            
-            e.preventDefault();
-
-            $('.max-reward-link').removeClass('.non-logged-in');
-
-            let bearTokenData = {
-                "username": maxRewardBearTokenUser,
-                "password": maxRewardBearTokenPassword
-            };
-
-            let options = {
-                method: 'POST',
-                headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-                body: JSON.stringify(bearTokenData)
-            };
-
-            fetch(maxRewardBearTokenUrl, options)
-                .then(response => response.json())
-                .then(response => {
-                    // Get Bear Token
-                    
-                    if (response.token) {
-                        return response.token;
-                    }
-
-                    return '';
-
-                })
-                .then(token => {
-                    let customerEmail = jsContext.customer.email;
-                    if (!token) {
-                        console.error('Token generate failed please check your token again');
-                        return;
-                    }
-                    if (!customerEmail) {
-                        console.error('No email found');
-                        return;
-                    }
-
-                    //Generate hmacSHA384 token
-
-                    let timeStamp = calculateDate(),
-                        hmacDigest = Encrypt.stringify(hmacSHA384(customerEmail + timeStamp, maxRewardKey));
-
-                    return {
-                        token,
-                        hmacDigest,
-                        customerEmail,
-                        timeStamp
-                    }
-
-                }).then(response => {
-                    if (response.hmacDigest) {
-
-                        console.log('has digest sha384');
-
-                        let bearToken = "Bearer " + response.token,
-                            authParams = {
-                                "authParams": {
-                                    "username": response.customerEmail,
-                                    "timestamp": response.timeStamp,
-                                    "digest": response.hmacDigest
-                                }
-                        };
-
-                        let options = {
-                            method: 'POST',
-                            headers: {
-                                Accept: 'application/json',
-                                'Content-Type': 'application/json',
-                                'Authorization': bearToken
-                            },
-                            body: JSON.stringify(authParams)
-                        };
-
-                        fetch(maxRewardGenerateSsoKeyAPI, options)
-                            .then(response => response.json())
-                            .then(response => {
-                                if (response.message === 'Success') {
-                                    $('.max-reward-link').css('pointer-events', 'auto');
-                                    maxRewardLink.attr('target', '_blank');
-                                    maxRewardLink.attr('href', maxRewardMenuLink.replace('ssovalue', response.data.ssokey));
-                                    console.log('SSO key generated')
-                                }
-                            });
-                    } else {
-                        console.error('No digest hmac key');
-                    }
-            }).catch(error => {
-                console.log(error)
-            })
-        }
+        // Get SSO key
+        getSSOKey(jsContext, maxRewardBearTokenUrl, bearOptions);
 
 
-
-
-        function customerJWT(apiAccountClientId='dl7c39mdpul6hyc489yk0vzxl6jesyx'){
-            const options = {
-                method: 'GET',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            };
-
-            let resource = `/customer/current.jwt?app_client_id=${apiAccountClientId}`;
-            return fetch(resource,options)
-                .then(jwt => jwt.json())
-                .then(jwt => {
-                    console.log(jwt); // JWT here
-
-                    const token = jwt.token;
-                    const encodedPayload = token.split('.')[1];
-                    const decodedPayload = JSON.parse(atob(encodedPayload));
-
-                    console.log('Decoded JWT Payload:', decodedPayload);
-
-                    // Example usage: Access decoded properties
-                    const customerId = decodedPayload.customer.id;
-                    const storehash = decodedPayload.store_hash;
-                    const companyId = decodedPayload.customer.group_id;
-
-
-
-                    const settings = {
-                        async: true,
-                        crossDomain: true,
-                        method: 'GET',
-                        headers: {
-                            Accept: 'application/json, 200-Response-IncludeExtraFields, 200-Standard Response',
-                            authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdG9yZV9oYXNoIjoiOHJxMHozb2hyayIsImRiIjoiZGVmYXVsdCIsImVtYWlsIjoic3VwcG9ydEBiYWxhbmNlaW50ZXJuZXQuY29tLmF1IiwibmFtZSI6IkJhbGFuY2UiLCJldmVudF9jaGFubmVsIjoiYXBwIiwidG9rZW5fdmVyc2lvbiI6InYzIn0.zsuPYEIj6A68UeorS9fQYXGIRYLAHh1zicYL96hlQRU'
-                        }
-                    };
-
-
-                    fetch('https://api-b2b.bigcommerce.com/api/v3/io/companies?isIncludeExtraFields=1&bcGroupId=18', settings)
-                        .then(response => response.json())
-                        .then(response => {
-                            console.log(response)
-                            let data = response.data[0],
-                                extraField = data.extraFields[0],
-                                customerCode = extraField.fieldValue;
-                            if (customerCode.length > 0) {
-
-                            }
-                        })
-
-
-                });
-        }
-        customerJWT();
+        // B2B feature
+        getCustomerBalancePoints(jsContext, maxRewardBearTokenUrl, bearOptions);
     }
 }

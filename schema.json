@@ -92,13 +92,13 @@
         "type": "text",
         "label": "API Account client ID",
         "force_reload": true,
-        "id": "api_account_client_Id"
+        "id": "api_account_client_id"
       },
       {
         "type": "text",
         "label": "B2B API URL",
         "force_reload": true,
-        "id": "b2b_api_url"
+        "id": "b2b_api"
       },
       {
         "type": "text",

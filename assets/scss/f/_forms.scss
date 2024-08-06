@@ -153,6 +153,7 @@ input:focus {
         order: 1;
         position: relative;
         width: 100%;
+        height: 42px;
 
         @include breakpoint("medium") {
             border-bottom-right-radius: 0;
