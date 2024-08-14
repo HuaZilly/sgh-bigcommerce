@@ -129,7 +129,7 @@
             {{#or customer (if theme_settings.restrict_to_login '===' 0)}}
             {{#and theme_settings.restrict_new_accounts (if customer_group_id '===' 0)}}
             {{else}}
-            <form class="form
+            <form class="form form-addtocart
             {{#if theme_settings.enable_circular_swatches}}swatches--round{{/if}}
             {{#if theme_settings.show_buy_now}}has-buy-now{{/if}}"
                   method="post"
@@ -152,11 +152,9 @@
             </form>
             {{/and}}
             {{/or}}
-            <div class="wishlist" style="display: none">
-                {{#if settings.show_wishlist}}
-                {{> components/common/wishlist-dropdown}}
-                {{/if}}
-            </div>
+            {{#if settings.show_wishlist}}
+            {{> components/common/wishlist-dropdown}}
+            {{/if}}
         </div>
         <div style="display: none">
             {{> components/common/share}}

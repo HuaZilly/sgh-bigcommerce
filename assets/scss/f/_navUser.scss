@@ -111,7 +111,7 @@
 		@include breakpoint("medium") {
 			display: inline-block;
 			.navUser-action {
-				display: inline-block;
+				display: flex;
 			}
 		}
 	}

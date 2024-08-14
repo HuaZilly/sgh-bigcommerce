@@ -18,16 +18,15 @@
 <!--        </li>-->
 <!--        {{/if}}-->
         <li class="navUser-item navUser-item--support">
-            <a href="/contact-us/">
+            <a href="/contact-us/" class="nav-has-label">
                 <img src="{{cdn 'img/header/support-icon.svg' }}" data-hover-src="{{cdn 'img/header/support-hover.svg' }}" width="40" height="45" alt="Support Icon" />
                 <span>Contact</span>
             </a>
         </li>
         <li class="navUser-item navUser-item--account">
-            <a class="navUser-action {{#if customer}}has-dropdown{{/if}}" href="{{urls.account.index}}" {{#if customer}}data-dropdown="accountOptions" aria-controls="accountOptions" aria-expanded="false" data-account-menu{{/if}}>
-            <span class="top-utilities-icon">
+            <a class="navUser-action nav-has-label {{#if customer}}has-dropdown{{/if}}" href="{{urls.account.index}}" {{#if customer}}data-dropdown="accountOptions" aria-controls="accountOptions" aria-expanded="false" data-account-menu{{/if}}>
                 <img src="{{cdn  'img/header/customer-icon.svg' }}" data-hover-src="{{cdn 'img/header/account-hover.svg' }}" width="40" height="40" alt="Customer Icon" />
-            </span>
+                <span>Account</span>
             </a>
             {{#if customer}}
             <ul class="dropdown-menu dropdown-menu--arrow-right is-open f-open-dropdown" id="accountOptions" data-dropdown-content="" aria-hidden="false" tabindex="-1">
@@ -69,8 +68,9 @@
         </li>
 
         <li class="navUser-item navUser-item--question">
-            <a href="/faq">
+            <a href="/faq" class="nav-has-label">
                 <img src="{{cdn 'img/header/question-icon.svg' }}" data-hover-src="{{cdn 'img/header/question-icon-hover.svg' }}" width="41" height="40" alt="Question Icon" />
+                <span>FAQ’s</span>
             </a>
         </li>
 

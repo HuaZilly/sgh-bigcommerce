@@ -90,7 +90,42 @@ $product-section__margin: 30px;
   @include breakpoint("medium") {
     padding: spacing("double") 0;
   }
+  .productView-options {
+    display: flex;
+    flex-direction: row;
+  }
 
+  .form-addtocart {
+    width: 200px;
+  }
+  .form-wishlist {
+    max-width: 225px;
+    .button--primary {
+      opacity: .5;
+      padding: 15px 10px;
+    }
+  }
+
+  @media screen and (max-width: 767px){
+    .productView-options {
+      flex-direction: column;
+      .form-wishlist {
+        max-width: 100%;
+      }
+      .form-addtocart {
+        width: 100%;
+        .form-increment {
+          width: 100%;
+          max-width: 100%;
+        }
+        .productView-info-bulkPricing {
+          margin: 0;
+          padding: 0;
+
+        }
+      }
+    }
+  }
 
 
   .productView-inner {

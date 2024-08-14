@@ -313,14 +313,19 @@ export default class Global extends PageManager {
 
         let logoList = $('.header [data-hover-src]');
         if (logoList.length > 0) {
-            logoList.each(function (index, element) {
-                $(element).attr('data-current-src', $(element).attr('src'));
-
+            let parentImg = logoList.parents('a');
+            console.log(parentImg)
+            parentImg.each(function (index, element) {
+                let image = $(element).find('[data-hover-src]'),
+                    text = $(element).find('[data-hover-src] + span');
+                image.attr('data-current-src', image.attr('src'));
                 $(element).on('mouseover', function () {
-                    $(this).attr('src', $(this).attr('data-hover-src'));
+                    image.attr('src', image.attr('data-hover-src'));
+                    text.show();
                 });
                 $(element).on('mouseleave', function () {
-                    $(this).attr('src', $(this).attr('data-current-src'));
+                    image.attr('src', image.attr('data-current-src'));
+                    text.hide();
                 });
             })
         }

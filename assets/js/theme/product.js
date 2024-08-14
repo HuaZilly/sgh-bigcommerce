@@ -93,6 +93,13 @@ export default class Product extends PageManager {
             tabContent = productDescription.find('.content');
 
         if (tabTitle.length > 0 && tabContent.length > 0) {
+            productDescription.each(function (index, element) {
+                if ($(element).hasClass('is-product-description')) {
+                    $(element).find('.content').show();
+                    $(element).find('.productView-title').addClass('active');
+                }
+            })
+
             tabTitle.on('click', function () {
                 $(this).toggleClass('active');
                 $(this).closest('.productView-description').find('.content').toggle();
