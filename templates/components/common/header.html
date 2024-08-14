@@ -21,6 +21,13 @@
 {{/if}}
 {{{region name="above_header--global"}}}
 {{{region name="above_header"}}}
+
+{{#if customer}}
+    <div class="balance-points-banner" style="display: none">
+        <div class="balance-message ">WELCOME %1 – Your current MAX Rewards balance is %2. </div>
+    </div>
+{{/if}}
+
 <header class="header {{#if customer}}header--customer {{#if theme_settings.logo_size '===' 'original'}} header--logo-original{{/if}}{{#if customer.store_credit.value "===" 0}}header--no-credit{{/if}}{{/if}} {{#if settings.gift_certificates_enabled}}header--gift-certificate-enabled{{else}}header--gift-certificate-disabled{{/if}} {{#and (if (length (split settings.store_logo.title "")) ">" 9) (unless settings.store_logo.image)}}header--logo-large{{/and}} {{#if (first (split theme_settings.logo_size "x")) ">" 200}}header--logo-large{{/if}} {{#if page_type '===' 'product'}}header--no-margin{{/if}} {{#unless theme_settings.show-quick-add-sku}}header--no-quick-add-sku{{/unless}} {{#or settings.store_logo.image theme_settings.svg_logo}} header--logo-image{{/or}} header--nav-{{ theme_settings.navigation_design }} header--width-{{theme_settings.header_width}}" role="banner">
   <div class="header__inner">
       <div class="header-middle-container">
@@ -32,21 +39,25 @@
             <li>
                 <a href="/account.php?action=order_status" alt="Icon 1">
                     <img src="{{cdn 'img/header/icon-1.svg' }}" data-hover-src="{{cdn 'img/header/order-hover.svg' }}"  alt="Icon" width="50" height="46" />
+                    <span>Orders</span>
                 </a>
             </li>
             <li>
                 <a href="/shopping-lists/" alt="Icon 2">
                     <img src="{{cdn 'img/header/icon-2.svg' }}" data-hover-src="{{cdn 'img/header/shopping-list-hover.svg' }}"  alt="Icon" width="40" height="43" />
+                    <span>Shopping Lists</span>
                 </a>
             </li>
             <li>
                 <a href="/buy-again/" alt="Icon 3">
                     <img src="{{cdn 'img/header/icon-3.svg' }}" data-hover-src="{{cdn 'img/header/clock-hover.svg' }}"  alt="Icon" width="50" height="46" />
+                    <span>Buy Again</span>
                 </a>
             </li>
             <li>
                 <a href="/invoices" alt="Icon 4">
-                    <img src="{{cdn 'img/header/invoice.png' }}"  alt="Icon" width="40" height="42" />
+                    <img src="{{cdn 'img/header/invoices.svg' }}" data-hover-src="{{cdn 'img/header/invoices-hover.svg' }}" alt="Icon" width="40" height="42" />
+                    <span>Invoices</span>
                 </a>
             </li>
         </ul>
@@ -100,82 +111,30 @@
       <img alt="icon" width="40" height="40" src="{{cdn 'img/header/clock-hover.svg' }}" />
       <img alt="icon" width="40" height="40" src="{{cdn 'img/header/cart-hover.svg' }}" />
       <img alt="icon" width="40" height="40" src="{{cdn 'img/header/account-hover.svg' }}" />
-      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/faq-hover.svg' }}" />
+      <img alt="icon" width="40" height="40" src="{{cdn 'img/header/question-icon.svg' }}" />
       <img alt="icon" width="40" height="40" src="{{cdn 'img/header/order-hover.svg' }}" />
   </div>
- <script type="text/javascript" async>
 
 
-function customerJWT(apiAccountClientId='dl7c39mdpul6hyc489yk0vzxl6jesyx'){
-   
+{{#if customer}}
+    {{inject "apiAccountClientId" theme_settings.api_account_client_id}}
+    {{inject "customerPointsApi" theme_settings.customer_points_api}}
+    {{inject "enabledTestMode" theme_settings.enabled_test_mode}}
+    {{inject "b2bAuthToken1" theme_settings.b2b_auth_token_1}}
+    {{inject "b2bAuthToken2" theme_settings.b2b_auth_token_2}}
+    {{inject "b2bAuthToken3" theme_settings.b2b_auth_token_3}}
+    {{inject "b2bAuthToken4" theme_settings.b2b_auth_token_4}}
+    {{inject "b2bAuthToken5" theme_settings.b2b_auth_token_5}}
 
+    {{inject "maxRewardBaseUrl" theme_settings.max_reward_base_url}}
+    {{inject "secretKey" theme_settings.max_reward_secret_key}}
+    {{inject "bearTokenUrl" theme_settings.max_reward_bear_token_url}}
+    {{inject "bearTokenUser" theme_settings.max_reward_bear_token_user}}
+    {{inject "bearTokenPassword" theme_settings.max_reward_bear_token_password}}
+    {{inject "generateSsoKeyAPI" theme_settings.max_reward_generate_ssokey_url}}
+    {{inject "maxRewardsMenuLink" theme_settings.max_reward_menu_link}}
 
-
-  const options = {
-  method: 'GET',
-  headers: {Accept: 'application/json', 'Content-Type': 'application/json'}
-};
- 
-  let resource = `/customer/current.jwt?app_client_id=${apiAccountClientId}`;
-  return fetch(resource,options)
-  .then(jwt => jwt.json())
-  .then(jwt => {
-    console.log(jwt); // JWT here
-
-    const token = jwt.token;
-    const encodedPayload = token.split('.')[1];
-    const decodedPayload = JSON.parse(atob(encodedPayload));
-
-    console.log('Decoded JWT Payload:', decodedPayload);
-
-    // Example usage: Access decoded properties
-    const customerId = decodedPayload.customer.id;
-    const storehash = decodedPayload.store_hash;
-    const companyId = decodedPayload.customer.group_id;
-
-
-
-const settings = {
-  async: true,
-  crossDomain: true,
-  url: 'https://api-b2b.bigcommerce.com/api/v3/io/companies?isIncludeExtraFields=1&bcGroupId='+companyId,
-  method: 'GET',
-  headers: {
-    Accept: 'application/json, 200-Response-IncludeExtraFields, 200-Standard Response',
-    authToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdG9yZV9oYXNoIjoiOHJxMHozb2hyayIsImRiIjoiZGVmYXVsdCIsImVtYWlsIjoic3VwcG9ydEBiYWxhbmNlaW50ZXJuZXQuY29tLmF1IiwibmFtZSI6IkJhbGFuY2UiLCJldmVudF9jaGFubmVsIjoiYXBwIiwidG9rZW5fdmVyc2lvbiI6InYzIn0.zsuPYEIj6A68UeorS9fQYXGIRYLAHh1zicYL96hlQRU'
-  }
-};
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-  
- 
-  
-});
-
-//
-//   const settings6 = {
-//   async: true,
-//   url: 'https://api.maxrewards.com.au/api/authentication/v1/login',
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     Accept: 'application/json'
-//   },
-//   data: '{"username": "username" ,"passwrod": "password"}'
-// };
-//
-// $.ajax(settings6).done(function (response) {
-//   console.log(response);
-//
-// });
- 
-  });
-}customerJWT();  
-  </script>
-
-  
-
+{{/if}}
 
 </header>
 {{{region name="below_header--global"}}}

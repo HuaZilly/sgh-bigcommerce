@@ -13,7 +13,7 @@ $mobile-menu-hover-color: stencilColor("mobile-menu-hover-color");
 $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
 $headerTopBarColor: stencilColor("color-white");
 $headerTopBarBackground: linear-gradient(to right, #f6882a, #ef492c);
-
+$headerTopbarColor-hover: #FFD800;
 body {
     padding-top: 0;
 }
@@ -22,8 +22,33 @@ body {
     margin-top: 0;
 }
 
+.balance-points-banner {
+    background-image: $headerTopBarBackground;
+    padding: 13px 15px;
+    z-index: 3;
+    text-align: center;
+    color: $headerTopBarColor;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: $fontWeight-semibold;
+    @include breakpoint("medium") {
+        font-size: 18px;
+    }
+    &:hover {
+        a {
+            color: $headerTopbarColor-hover;
+        }
+    }
+    a {
+        font-weight: $fontWeight-bold;
+        color: $color-white;
+        text-decoration: none;
+    }
+}
+
 [data-content-region="above_header_banner--global"] {
     background-image: $headerTopBarBackground;
+    display: none;
     padding: 13px 15px;
     z-index: 3;
     p,
@@ -161,6 +186,9 @@ body {
             @include breakpoint("medium") {
                 top: -30px;
                 right: 0;
+                &.non-logged-in {
+                    top: -70px;
+                }
             }
 
             img {

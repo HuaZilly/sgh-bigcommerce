@@ -1,5 +1,5 @@
 {
-  "name": "Camden B2B Edition - OQM validation by Flair 1/8 (2)",
+  "name": "Camden B2B Edition - OQM validation by Flair 12/8 - 3",
   "version": "1.10.2",
   "meta": {
     "price": 23500,
@@ -538,12 +538,19 @@
     "stack_product_description": false,
     "max_reward_secret_key": "aEu1jE%9HVjfOC1hM!ZOKlJ%OfmgYT7N4$rPWH83IHd^XtL8",
     "max_reward_menu_label": "Max Rewards",
-    "max_reward_bear_token_user": "stealthapi",
-    "max_reward_bear_token_password": "9^S@j0Ro3LSYyaID",
+    "max_reward_bear_token_user": "maxtest1",
+    "max_reward_bear_token_password": "M@xR3ward5",
     "max_reward_base_url": "https://api.maxrewards.lori.works/api/",
     "max_reward_menu_link": "https://maxrewards.lori.works/service/ssoLogin?ssokey=ssovalue",
     "max_reward_bear_token_url": "Authentication/v1/Login",
-    "max_reward_generate_ssokey_url": "Authentication/v1/SingleSignOn/GenerateKey"
+    "max_reward_generate_ssokey_url": "Authentication/v1/SingleSignOn/GenerateKey",
+    "api_account_client_id": "dl7c39mdpul6hyc489yk0vzxl6jesyx",
+    "customer_points_api": "https://api.maxrewards.lori.works/api/stealth/v1/",
+    "b2b_auth_token_1": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdG9yZV9oYXNoIjoicXJ",
+    "b2b_auth_token_2": "qd3psMGg5cCIsImRiIjoiZGVmYXVsdCIsImVtYWlsIjoidGhhbmguaHVhQGJhbGF",
+    "b2b_auth_token_3": "uY2VpbnRlcm5ldC5jb20uYXUiLCJuYW1lIjoiQmFsYW5jZSBpbnRlcm5ldCIs",
+    "b2b_auth_token_4": "ImV2ZW50X2NoYW5uZWwiOiJhcHAiLCJ0b2tlbl92ZXJzaW9uIjoidjMifQ.",
+    "b2b_auth_token_5": "8pdWGPp0oYy3W_W-itEu01I9m8VBJGm30oYAUsI3Hsc"
   },
   "read_only_files": [
     "/assets/scss/components/citadel",
@@ -1100,7 +1107,14 @@
         "max_reward_base_url": "https://api.maxrewards.lori.works/api/",
         "max_reward_menu_link": "https://maxrewards.lori.works/service/ssoLogin?ssokey=ssovalue",
         "max_reward_bear_token_url": "Authentication/v1/Login",
-        "max_reward_generate_ssokey_url": "Authentication/v1/SingleSignOn/GenerateKey"
+        "max_reward_generate_ssokey_url": "Authentication/v1/SingleSignOn/GenerateKey",
+        "api_account_client_id": "dl7c39mdpul6hyc489yk0vzxl6jesyx",
+        "customer_points_api": "https://api.maxrewards.lori.works/api/stealth/v1/",
+        "b2b_auth_token_1": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdG9yZV9oYXNoIjoicXJ",
+        "b2b_auth_token_2": "qd3psMGg5cCIsImRiIjoiZGVmYXVsdCIsImVtYWlsIjoidGhhbmguaHVhQGJhbGF",
+        "b2b_auth_token_3": "uY2VpbnRlcm5ldC5jb20uYXUiLCJuYW1lIjoiQmFsYW5jZSBpbnRlcm5ldCIs",
+        "b2b_auth_token_4": "ImV2ZW50X2NoYW5uZWwiOiJhcHAiLCJ0b2tlbl92ZXJzaW9uIjoidjMifQ.",
+        "b2b_auth_token_5": "8pdWGPp0oYy3W_W-itEu01I9m8VBJGm30oYAUsI3Hsc"
       }
     },
     {

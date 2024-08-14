@@ -43,6 +43,12 @@ $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
     -webkit-transform: translateZ(0);
 }
 
+.header {
+    #pc-quickorderpad-entry  {
+        display: none;
+    }
+}
+
 .navUser.sticky.fixed {
     bottom: auto;
     margin: 0;

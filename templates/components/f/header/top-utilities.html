@@ -20,6 +20,7 @@
         <li class="navUser-item navUser-item--support">
             <a href="/contact-us/">
                 <img src="{{cdn 'img/header/support-icon.svg' }}" data-hover-src="{{cdn 'img/header/support-hover.svg' }}" width="40" height="45" alt="Support Icon" />
+                <span>Contact</span>
             </a>
         </li>
         <li class="navUser-item navUser-item--account">
@@ -69,17 +70,17 @@
 
         <li class="navUser-item navUser-item--question">
             <a href="/faq">
-                <img src="{{cdn 'img/header/question-icon.svg' }}" data-hover-src="{{cdn 'img/header/faq-hover.svg' }}" width="41" height="40" alt="Question Icon" />
+                <img src="{{cdn 'img/header/question-icon.svg' }}" data-hover-src="{{cdn 'img/header/question-icon-hover.svg' }}" width="41" height="40" alt="Question Icon" />
             </a>
         </li>
 
         {{> components/f/header/header-cart}}
     </ul>
-    {{#if customer}}
-        <span class="navUser-item navUser-item--max-rewards">
-                <a href="/">
+    {{#and theme_settings.max_reward_menu_link theme_settings.max_reward_menu_label }}
+        <span class="navUser-item navUser-item--max-rewards max-reward-link non-logged-in">
+                <a href="{{theme_settings.max_reward_menu_link}}" alt="Max Reward">
                     <img src="{{cdn 'img/header/max-rewards.png' }}" width="100" height="100" alt="Max Rewards Image" />
                 </a>
         </span>
-    {{/if}}
+    {{/and}}
 </nav>
