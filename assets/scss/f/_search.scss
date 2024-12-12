@@ -16,7 +16,7 @@ $input-separator-bg: stencilColor("input-separator-bg");
     justify-content: center;
     flex-grow: 1;
     margin: 0;
-    z-index: 30;
+    z-index: 1;
 
     @include breakpoint("medium") {
         margin-bottom: spacing("half");
@@ -25,6 +25,9 @@ $input-separator-bg: stencilColor("input-separator-bg");
 
     @include breakpoint("large") {
         width: auto;
+    }
+    .card-text {
+        text-align: left;
     }
 }
 
@@ -71,8 +74,8 @@ $input-separator-bg: stencilColor("input-separator-bg");
     }
 
     .search-button {
-        background: $button-bg;
-        border: 1px solid $button-search-border__color;
+        background: $color-grey1;
+        border: 1px solid $color-grey2;
         bottom: 0;
         color: $button-color;
         font-size: remCalc(18px);
@@ -348,7 +351,8 @@ $input-separator-bg: stencilColor("input-separator-bg");
             grid-row-start: 2;
             margin: 0 0 spacing("eighth");
             font-size: remCalc(17px);
-            font-weight: 600;
+            font-weight: $fontWeight-semibold;
+            text-align: left;
         }
 
         .card-text {

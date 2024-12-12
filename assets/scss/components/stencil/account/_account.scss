@@ -33,6 +33,55 @@
     margin-left: 0;
 }
 
+.order-lists-wrap {
+    .order-lists-table {
+        .actions-field {
+            .button {
+                text-decoration: none;
+            }
+        }
+        tbody {
+            > tr {
+                > td {
+
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .order-lists-wrap {
+        .order-lists-table {
+            tbody {
+                > tr {
+                    > td {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 5px 15px;
+                        &.actions-field {
+                            display: block;
+                            width: 100%;
+                            a.button--small {
+                                display: block;
+                                margin: 10px 0
+                            }
+                            &:before {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.account-body {
+    [name="search-company"] {
+        border: 1px solid stencilColor("color-primary");
+    }
+}
+
 .account-listItem {
     border-bottom: container("border");
     padding: spacing("single") 0;

@@ -19,9 +19,8 @@ import autoHighlight from './f/auto-highlight';
 import cardAddToCart from './f/card-add-to-cart';
 import hoverNavigation from './f/hover-navigation';
 import validity from './f/check-validity';
-import hmacSHA384 from 'crypto-js/hmac-sha384';
-import sha384 from 'crypto-js/sha384';
-import Base64 from 'crypto-js/enc-base64';
+import getCustomerBalancePoints from "./get-customer-balance-points";
+import getSSOKey from "./get-sso-key"
 import swal from './global/sweet-alert';
 
 export default class Global extends PageManager {
@@ -52,13 +51,48 @@ export default class Global extends PageManager {
             $('.apple-pay-checkout-button').show();
         }
 
-        let topBanner = $('[data-content-region="above_header_banner--global"]'),
-            topBannerHeight = 0;
-        if (topBanner.length > 0) {
-            topBannerHeight = topBanner.height() + 26;
+        if (window.location.pathname === '/') {
+            $('body').addClass('is-home')
         }
-        document.documentElement.style.setProperty('--app-global-banner-height', topBannerHeight + 'px');
 
+        if ($('.slider-enabled').length > 0) {
+            let imageGroupSlider = $('.slider-enabled').find('.image-slider-container');
+            if (imageGroupSlider.length === 1) {
+                imageGroupSlider.slick({
+                    dots: false,
+                    infinite: false,
+                    slidesToScroll: 5,
+                    slidesToShow: 5,
+                    prevArrow: '<span class="slick-prev"></span>',
+                    nextArrow: '<span class="slick-next"></span>',
+                    responsive: [
+                        {
+                            breakpoint: 1260,
+                            settings: {
+                                slidesToScroll: 4,
+                                slidesToShow: 4
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToScroll: 3,
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 767,
+                            settings: {
+                                slidesToScroll: 1,
+                                slidesToShow: 1
+                            }
+                        }
+                    ]
+                });
+
+
+            }
+        }
 
         let heroBannerCarousel = $('.hero-banner-carousel'),
             heroContainer = heroBannerCarousel.find('.hero-banner');
@@ -66,6 +100,53 @@ export default class Global extends PageManager {
         console.log(heroContainer);
         if(heroContainer.length > 0) {
             heroContainer.slick()
+        }
+
+        let productContainer = $('.product-container').find('.productCards');
+        if (productContainer.length > 0) {
+            productContainer.slick({
+                dots: false,
+                infinite: false,
+                slidesToScroll: 5,
+                slidesToShow: 5,
+                prevArrow: '<span class="slick-prev"></span>',
+                nextArrow: '<span class="slick-next"></span>',
+                responsive: [
+                {
+                    breakpoint: 1260,
+                    settings: {
+                        slidesToScroll: 4,
+                        slidesToShow: 4,
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToScroll: 3,
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToScroll: 1,
+                        slidesToShow: 1,
+                    }
+                }
+            ]
+            });
+
+
+            productContainer.each(function (index, element) {
+                let productName = $(element).find('.productCard .card-title');
+
+                let productNameHeight = $(productName).map(function () {
+                    return $(this).height();
+                }).get();
+
+                productName.css('height',  Math.max.apply(null, productNameHeight))
+            })
+
         }
 
         function validateQuantity(quantityInput) {
@@ -230,119 +311,58 @@ export default class Global extends PageManager {
         };
         /* BundleB2B */
 
+        let logoList = $('.header [data-hover-src]');
+        if (logoList.length > 0) {
+            let parentImg = logoList.parents('a');
+            console.log(parentImg)
+            parentImg.each(function (index, element) {
+                let image = $(element).find('[data-hover-src]'),
+                    text = $(element).find('[data-hover-src] + span');
+                image.attr('data-current-src', image.attr('src'));
+                $(element).on('mouseover', function () {
+                    image.attr('src', image.attr('data-hover-src'));
+                    text.show();
+                });
+                $(element).on('mouseleave', function () {
+                    image.attr('src', image.attr('data-current-src'));
+                    text.hide();
+                });
+            })
+        }
+
+
         let jsContext = this.context,
-            maxRewardKey = jsContext.secretKey,
             maxRewardBaseUrl = jsContext.maxRewardBaseUrl,
             maxRewardBearTokenUrl = maxRewardBaseUrl + jsContext.bearTokenUrl,
             maxRewardBearTokenUser = jsContext.bearTokenUser,
-            maxRewardBearTokenPassword = jsContext.bearTokenPassword,
-            maxRewardGenerateSsoKeyAPI = maxRewardBaseUrl + jsContext.generateSsoKeyAPI,
-            maxRewardLink = document.querySelector('.max-reward-link a');
+            maxRewardBearTokenPassword = jsContext.bearTokenPassword;
 
-        if (maxRewardLink) {
-            maxRewardLink.addEventListener('click', generateSsoKey);
+
+        let bearTokenData = {
+            "username": maxRewardBearTokenUser,
+            "password": maxRewardBearTokenPassword
+        };
+
+        let bearOptions = {
+            method: 'POST',
+            headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+            body: JSON.stringify(bearTokenData)
+        };
+
+        if (jsContext.customer) {
+            // Get SSO key
+            getSSOKey(jsContext, maxRewardBearTokenUrl, bearOptions);
+
+            // B2B feature
+            getCustomerBalancePoints(jsContext, maxRewardBearTokenUrl, bearOptions);
         }
 
-        Number.prototype.padLeft = function(base, chr){
-            let  len = (String(base || 10).length - String(this).length) + 1;
-            return len > 0 ? new Array(len).join(chr || '0')+this : this;
+        let topBanner = $('.balance-points-banner'),
+            topBannerHeight = 0;
+        if (topBanner.length > 0) {
+            topBannerHeight = topBanner.height() + 26;
         }
 
-        function generateDatabaseDateTime(date) {
-            return date.toISOString().replace("T"," ").substring(0, 19);
-        }
-
-        function calculateDate() {
-            let theDate = new Date;
-
-            return [theDate.getDate().padLeft(),
-                    (theDate.getMonth() + 1).padLeft(),
-                    theDate.getFullYear()].join('-') + '-' +
-                    [theDate.getHours().padLeft(),
-                    theDate.getMinutes().padLeft(),
-                    theDate.getSeconds().padLeft()].join('-');
-
-        }
-
-        function generateSsoKey(e) {
-            e.preventDefault();
-            let bearTokenData = {
-                "username": maxRewardBearTokenUser,
-                "password": maxRewardBearTokenPassword
-            };
-
-            let options = {
-                method: 'POST',
-                headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-                body: JSON.stringify(bearTokenData)
-            };
-
-            fetch(maxRewardBearTokenUrl, options)
-                .then(response => response.json())
-                .then(response => {
-                    // Get Bear Token
-                    if (response.token) {
-                        return response.token;
-                    }
-                    else {
-                        return ''
-                    }
-
-                })
-                .then(token => {
-                    let customerEmail = jsContext.customer.email;
-                    if (!token) {
-                        console.error('Token generate failed please check your token again');
-                        return;
-                    }
-                    if (!customerEmail) {
-                        console.error('No email found');
-                        return;
-                    }
-                    let timeStamp = calculateDate(),
-                        hasDigest = sha384(customerEmail + timeStamp),
-                        hmacDigest = Base64.stringify(hmacSHA384(maxRewardKey, hasDigest));
-
-                    return {
-                        token,
-                        hmacDigest,
-                        customerEmail,
-                        timeStamp
-                    }
-
-                }).then(response => {
-                    if (response.hmacDigest) {
-                        console.log('has digest sha384');
-                        let bearToken = "Bearer " + response.token,
-                            authParams = {
-                                "authParams": {
-                                    "digest": response.hmacDigest,
-                                    "username": response.customerEmail,
-                                    "timestamp": response.timeStamp
-                                }
-                        };
-
-                        let options = {
-                            method: 'POST',
-                            headers: {
-                                Accept: 'application/json',
-                                'Content-Type': 'application/json',
-                                'Authorization': bearToken
-                            },
-                            body: JSON.stringify(authParams)
-                        };
-
-                        fetch(maxRewardGenerateSsoKeyAPI, options)
-                            .then(response => {
-                                console.log(2)
-                                console.log(response)
-                            })
-                    } else {
-                        console.error('No digest hmac key');
-                    }
-            }).catch(error => {
-                console.log(error)
-            })
-        }
+        document.documentElement.style.setProperty('--app-global-banner-height', topBannerHeight + 'px');
     }
 }

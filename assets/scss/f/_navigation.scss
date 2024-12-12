@@ -43,6 +43,12 @@ $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
     -webkit-transform: translateZ(0);
 }
 
+.header {
+    #pc-quickorderpad-entry  {
+        display: none;
+    }
+}
+
 .navUser.sticky.fixed {
     bottom: auto;
     margin: 0;
@@ -144,7 +150,7 @@ $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
     height: remCalc(30px);
     width: remCalc(30px);
     line-height: remCalc(30px);
-    margin-left: spacing("half")*1.5;
+    margin-left: 0;
 
     @include breakpoint("xlarge") {
         margin-left: spacing("third");

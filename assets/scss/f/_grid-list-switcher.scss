@@ -8,10 +8,10 @@
 
   .switcher {
     display: block;
-    height: remCalc(14px);
+    height: remCalc(20px);
     margin-left: spacing("half");
     position: relative;
-    width: remCalc(14px);
+    width: remCalc(20px);
 
     svg {
         fill: stencilColor("color-textSecondary");

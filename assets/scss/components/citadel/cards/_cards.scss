@@ -24,6 +24,19 @@
     }
 }
 
+
+
+.card {
+    .price-section {
+        text-align: center;
+    }
+}
+
+.card-section--body {
+    text-align: center;
+
+}
+
 .card-img-container {
     max-width: get-width(stencilString('productgallery_size'));
 
@@ -56,7 +69,8 @@
 .card-title {
     font-size: $card-title-fontSize;
     margin: $card-title-margin;
-
+    font-weight: $fontWeight-semibold;
+    text-align: center;
     > a {
         color: $card-title-color;
         text-decoration: $card-title-textDecoration;
@@ -70,11 +84,14 @@
 
 .card-text {
     margin-bottom: $card-text-marginBottom;
-
+    text-align: center;
     abbr {
         border: 0;
         color: inherit;
         font-size: inherit;
+    }
+    .text-label {
+        font-weight: $fontWeight-semibold;
     }
 }
 

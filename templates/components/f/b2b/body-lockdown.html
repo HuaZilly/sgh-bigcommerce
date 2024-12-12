@@ -54,9 +54,10 @@
     {{/unless}}
     {{#or theme_settings.hide_promotions_on_lockdown (if page_type '!==' 'default')}}
         <div class="login">
-            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-            <div class="account-container">
+            <div class="container">
+                {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            </div>
+            <div class="account-container no-log-in">
                 <h1 class="page-heading">{{lang 'login.heading' }}</h1>
                 <p>
                     {{lang 'b2b.lockdown.login_required'}}

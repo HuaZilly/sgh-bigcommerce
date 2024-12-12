@@ -389,8 +389,36 @@ $hero-arrow-next: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
     }
 }
 .hero-banner-carousel {
-    margin-bottom: 30px;
+    margin-bottom: 0;
+    overflow: hidden;
     .slick-arrow {
         opacity: 0;
+    }
+}
+
+.text-with-image {
+    background: stencilColor('color-textSecondary');
+    .text-inner {
+        color: $color-white;
+        margin: 0;
+        font-size: $section-title__font-size_mobile;
+        line-height: $section-title__line-height_mobile;
+    }
+    @include breakpoint("medium") {
+        .text-inner {
+            font-size: $section-title__font-size;
+            line-height: $section-title__line-height;
+            padding-right: 20px;
+        }
+    }
+
+    .content-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 0 20px;
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+        }
     }
 }

@@ -25,6 +25,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
 }
 
 .side-cart-container {
+  background: $color-grey1;
   display: block;
   float: right;
   width: 25%;
@@ -34,7 +35,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
   &.mobile-mode {
     .side-cart-container {
       display: block;
-      max-height: 85vh;
+      max-height: initial;
     }
 
     .side-cart-content {
@@ -50,7 +51,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
 }
 
 .side-cart {
-  background: stencilColor("container-fill-base");
+  background: $color-grey1;
   border-radius: 0;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
   margin-bottom: spacing("single");
@@ -64,7 +65,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
 
   h4 {
     font-size: $fontSize-base;
-    font-weight: $fontWeight-normal;
+    font-weight: $fontWeight-semibold;
     margin-bottom: spacing("quarter");
     margin-top: 0;
     text-decoration: none;
@@ -73,7 +74,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
   .side-cart-content,
   .side-cart-title,
   .side-cart-sku-add {
-    border-bottom: container("border");
+    border-bottom: 2px solid $color-white;
   }
 
   .sku-add {
@@ -81,9 +82,10 @@ $card-color-hover: stencilColor("card-title-color-hover");
   }
 
   .side-cart-title {
-    font-size: $fontSize-large;
-    font-weight: 600;
+    font-size: $fontSize-xxl;
+    font-weight: 700;
     padding-bottom: spacing("base");
+    text-align: center;
   }
 
   .side-cart-item-name a {
@@ -101,7 +103,7 @@ $card-color-hover: stencilColor("card-title-color-hover");
     position: relative;
 
     .side-cart-placeholder {
-      color: $input-placeholder-color;
+      color: $color-black1;
       display: none;
       margin: spacing("base") 0;
       text-align: center;
@@ -155,6 +157,8 @@ $card-color-hover: stencilColor("card-title-color-hover");
             border: container("border");
             border-radius: 2px;
             vertical-align: baseline;
+            font-size: $fontSize-tiny;
+            height: 35px;
           }
         }
 
@@ -192,7 +196,20 @@ $card-color-hover: stencilColor("card-title-color-hover");
   .side-cart-sku-add {
     padding: spacing("base") 0;
     position: relative;
-
+    .sku-add {
+      .form-input {
+        &.form-input--sku-num {
+          border-left: none;
+        }
+      }
+    }
+    .search-button {
+      @include buttonVariant("primary");
+      text-transform: uppercase;
+      border-radius: 0;
+      font-weight: $fontWeight-semibold;
+      width: 80px;
+    }
     input {
       font-size: $fontSize-base;
       line-height: spacing("single");
@@ -269,12 +286,13 @@ $card-color-hover: stencilColor("card-title-color-hover");
     }
 
     .side-cart-detail {
-      border-bottom: container("border");
+      border-bottom: 2px solid $color-white;
       clear: both;
       display: inline-table;
-      padding: (spacing("base") / 2) 0;
+      padding: 15px 0;
       width: 100%;
-
+      color: $color-black1;
+      font-size: $fontSize-xl;
       span:nth-child(odd) {
         float: left;
       }
@@ -296,6 +314,11 @@ $card-color-hover: stencilColor("card-title-color-hover");
     }
   }
 
+  .side-cart-action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .side-cart-actions {
     display: inline-table;
     width: 100%;
@@ -303,8 +326,9 @@ $card-color-hover: stencilColor("card-title-color-hover");
     .button {
       display: inline-block;
       margin: (spacing("base") / 4) 0 0 0;
-      padding: spacing("half");
+      padding: 15px 10px;
       width: calc(50% - 0.3rem);
+      text-transform: uppercase;
 
       &.button--without-checkout {
         margin-bottom: spacing("half");

@@ -58,6 +58,7 @@
 // -----------------------------------------------------------------------------
 .facetedSearch-navList {
     display: none;
+    padding: 0 15px 15px;
 
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule
@@ -79,6 +80,8 @@
     .sidebarBlock + & {
         margin-top: $facetedSearch-toggle-verticalSpacing;
     }
+
+
 
 
     .facetedSearch-toggle + &.is-open,

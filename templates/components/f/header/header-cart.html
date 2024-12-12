@@ -1,13 +1,13 @@
 <li class="navUser-item navUser-item--cart">
     <a
-        class="navUser-action"
+        class="navUser-action nav-has-label"
         data-cart-preview
         data-dropdown="cart-preview-dropdown"
         data-options="align:right"
         href="{{urls.cart}}">
         <span class="navUser-item-cartLabel">
-            <img src="{{cdn  'img/header/cart-icon.svg' }}" width="50" height="46" alt="Cart Icon" />
-            <span class="cartLabel"></span>
+            <img src="{{cdn  'img/header/cart-icon.svg' }}" data-hover-src="{{cdn 'img/header/cart-icon-hover.svg' }}" width="45" height="46" alt="Cart Icon" />
+            <span class="cart-icon">Cart</span>
         </span>
         <span class="countPill countPill--positive cart-quantity">{{cart.quantity}}</span>
     </a>

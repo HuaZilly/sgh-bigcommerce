@@ -1,0 +1,16 @@
+<svg id="Component_44_1" data-name="Component 44 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49.632" height="45.703" viewBox="0 0 49.632 45.703">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_211" data-name="Rectangle 211" width="49.632" height="45.703" transform="translate(-4 -4)" fill="none" stroke="#02050d" stroke-width="3"/>
+    </clipPath>
+  </defs>
+  <path id="Path_249" data-name="Path 249" d="M51.053,35.554V45.861H42.264" transform="translate(-28.702 -23.51)" fill="none" stroke="#02050d" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <g id="Group_231" data-name="Group 231" transform="translate(4 4)">
+    <g id="Group_230" data-name="Group 230" clip-path="url(#clip-path)">
+      <path id="Path_250" data-name="Path 250" d="M19.9,37.8A17.9,17.9,0,1,1,37.8,19.9V21.16" transform="translate(-1.547 -1.547)" fill="none" stroke="#02050d" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_251" data-name="Path 251" d="M150.7,113.23h-9.153l5.98-8.787h.976v12.448" transform="translate(-109.521 -80.812)" fill="none" stroke="#02050d" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_252" data-name="Path 252" d="M98.884,105.192a13.246,13.246,0,0,1,1.983-1.511,3.982,3.982,0,0,1,.449-.219,3.536,3.536,0,0,1,4.031,5.513,33.788,33.788,0,0,1-3.3,3.549L98.4,115.932h7.994" transform="translate(-76.133 -79.853)" fill="none" stroke="#02050d" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_253" data-name="Path 253" d="M141,67.962l4.347,3.856,3.856-4.347" transform="translate(-109.101 -52.205)" fill="none" stroke="#02050d" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

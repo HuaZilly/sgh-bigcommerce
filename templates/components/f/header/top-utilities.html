@@ -17,17 +17,16 @@
 <!--            <a class="navUser-action" href="{{urls.gift_certificate.purchase}}"><span class="top-utilities-icon"><svg><use xlink:href="#icon-gift"></use></svg></span><span class="navUser-text"> {{lang 'common.gift_cert'}}</span></a>-->
 <!--        </li>-->
 <!--        {{/if}}-->
-
         <li class="navUser-item navUser-item--support">
-            <a href="/contact-us/">
-                <img src="{{cdn 'img/header/support-icon.svg' }}" width="45" height="45" alt="Support Icon" />
+            <a href="/contact-us/" class="nav-has-label">
+                <img src="{{cdn 'img/header/support-icon.svg' }}" data-hover-src="{{cdn 'img/header/support-hover.svg' }}" width="40" height="45" alt="Support Icon" />
+                <span>Contact</span>
             </a>
         </li>
         <li class="navUser-item navUser-item--account">
-            <a class="navUser-action {{#if customer}}has-dropdown{{/if}}" href="{{urls.account.index}}" {{#if customer}}data-dropdown="accountOptions" aria-controls="accountOptions" aria-expanded="false" data-account-menu{{/if}}>
-            <span class="top-utilities-icon">
-                <img src="{{cdn  'img/header/customer-icon.svg' }}" width="40" height="40" alt="Customer Icon" />
-            </span>
+            <a class="navUser-action nav-has-label {{#if customer}}has-dropdown{{/if}}" href="{{urls.account.index}}" {{#if customer}}data-dropdown="accountOptions" aria-controls="accountOptions" aria-expanded="false" data-account-menu{{/if}}>
+                <img src="{{cdn  'img/header/customer-icon.svg' }}" data-hover-src="{{cdn 'img/header/account-hover.svg' }}" width="40" height="40" alt="Customer Icon" />
+                <span>Account</span>
             </a>
             {{#if customer}}
             <ul class="dropdown-menu dropdown-menu--arrow-right is-open f-open-dropdown" id="accountOptions" data-dropdown-content="" aria-hidden="false" tabindex="-1">
@@ -69,18 +68,19 @@
         </li>
 
         <li class="navUser-item navUser-item--question">
-            <a href="/">
-                <img src="{{cdn 'img/header/question-icon.svg' }}" width="41" height="40" alt="Question Icon" />
+            <a href="/faq" class="nav-has-label">
+                <img src="{{cdn 'img/header/question-icon.svg' }}" data-hover-src="{{cdn 'img/header/question-icon-hover.svg' }}" width="41" height="40" alt="Question Icon" />
+                <span>FAQ’s</span>
             </a>
         </li>
 
         {{> components/f/header/header-cart}}
     </ul>
-    {{#if customer}}
-        <span class="navUser-item navUser-item--max-rewards">
-                <a href="/">
+    {{#and theme_settings.max_reward_menu_link theme_settings.max_reward_menu_label }}
+        <span class="navUser-item navUser-item--max-rewards max-reward-link non-logged-in">
+                <a href="{{theme_settings.max_reward_menu_link}}" alt="Max Reward">
                     <img src="{{cdn 'img/header/max-rewards.png' }}" width="100" height="100" alt="Max Rewards Image" />
                 </a>
         </span>
-    {{/if}}
+    {{/and}}
 </nav>

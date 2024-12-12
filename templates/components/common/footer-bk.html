@@ -1,0 +1,111 @@
+{{{region name="above_footer_banner--global"}}}
+{{{region name="above_footer_banner"}}}
+{{#if banners.bottom}}
+    {{#if settings.data_tag_enabled}}
+        <div class="banners" data-banner-location="bottom">
+            {{#each (limit banners.bottom_metadata 1)}}
+                <div class="banner banner--footer" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                    <div data-event-type="promotion-click">
+                        {{{this.content}}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="banners" data-banner-location="bottom">
+            <div class="banner banner--footer">
+                {{{limit banners.bottom 1}}}
+            </div>
+        </div>
+    {{/if}}
+{{/if}}
+
+{{{region name="above_footer"}}}
+
+<div class="before-footer-region">
+    <div class="container container--footer">
+        {{{region name="above_footer--global"}}}
+    </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-logo">
+            <span>
+                <img src="{{cdn 'img/header/footer-logo.svg' }}" width="440" height="51" alt="Footer Logo" />
+            </span>
+        </div>
+        <section class="footer-info">
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">Trade Member Direct</h5>
+                <ul class="footer-info-list">
+                    <li> 2nd Floor, </li>
+                    <li>43 Cedric Street,</li>
+                    <li>Stirling, Western Australia, 6021</li>
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                <h5 class="footer-info-heading">{{lang 'footer.navigate'}}</h5>
+                <ul class="footer-info-list">
+                    {{#each pages}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                    <li>
+                        <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-categories">
+                <h5 class="footer-info-heading">{{lang 'footer.categories'}}</h5>
+                <ul class="footer-info-list">
+                    {{#each categories}}
+                        {{#if ../theme_settings.hide_navigation_featured_categories}}
+                            {{#if name '!==' ../../theme_settings.featured_category_name}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/if}}
+                        {{else}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </article>
+
+            {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
+                <h5 class="footer-info-heading">{{lang 'footer.brands'}}</h5>
+                <ul class="footer-info-list">
+                    {{#each shop_by_brand}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                    <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                </ul>
+            </article>
+            {{/and}}
+
+            {{#if settings.address}}
+            <article class="footer-info-col footer-info-col--small footer-info-col--address" data-section-type="storeInfo">
+                <h5 class="footer-info-heading">{{lang 'footer.info'}}</h5>
+                <div class="footer-info-list">
+                    <address>{{nl2br settings.address}}</address>
+                    {{#if settings.phone_number}}
+                        <a  href="tel:{{settings.phone_number}}"><strong>{{lang 'footer.call_us' phone_number=settings.phone_number}}</strong></a>
+                    {{/if}}
+                </div>
+            </article>
+            {{/if}}
+
+        </section>
+    </div>
+</footer>
+{{{region name="below_footer"}}}
+{{{region name="below_footer--global"}}}

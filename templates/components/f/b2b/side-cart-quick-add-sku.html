@@ -11,14 +11,6 @@
       <div class="form-field">
         <div class="form-input-wrap">
           <input
-            class="form-input form-input--sku-num"
-            name="sku"
-            type="text"
-            placeholder="{{lang 'b2b.header.sku_text'}}"
-            data-sku
-            autocorrect="off"
-          />
-          <input
             class="form-input form-input--sku-qty"
             name="qty"
             type="tel"
@@ -27,9 +19,17 @@
             data-qty
             autocomplete="off"
           />
+          <input
+            class="form-input form-input--sku-num"
+            name="sku"
+            type="text"
+            placeholder="{{lang 'b2b.header.sku_text'}}"
+            data-sku
+            autocorrect="off"
+          />
         </div>
         <span class="quick-add-result"></span>
-        <button type="submit" class="search-button" type="submit">Add</button>
+        <button type="submit" class="search-button button button--primary">Add</button>
       </div>
     </fieldset>
   </form>

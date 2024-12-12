@@ -17,6 +17,24 @@
 <script type="text/javascript">
     window.language = {{{langJson 'optimized_checkout'}}};
 </script>
+<style type="text/css">
+
+    @media screen and (min-width: 768px) {
+        .checkoutHeader-link img {
+            max-width: 400px;
+        }
+        .layout {
+            padding: 0 1.5rem 7.5rem
+        }
+    }
+
+    .layout {
+        padding: 0 0 7.5rem
+    }
+
+
+
+</style>
 
 {{{head.scripts}}}
 
@@ -26,7 +44,7 @@
 <header class="checkoutHeader optimizedCheckout-header">
     <div class="checkoutHeader-content">
         <h1 class="is-srOnly">{{lang 'checkout.title'}}</h1>
-        <h2 class="checkoutHeader-heading">
+        <h2 class="checkoutHeader-heading" style="text-align: center">
             <a class="checkoutHeader-link" href="{{urls.home}}">
                 {{#if checkout.header_image}}
                     {{#if theme_settings.svg_logo}}

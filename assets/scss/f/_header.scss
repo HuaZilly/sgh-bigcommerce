@@ -13,7 +13,7 @@ $mobile-menu-hover-color: stencilColor("mobile-menu-hover-color");
 $navUser-indicator-backgroundColor: stencilColor("header-bottom-nav-hover");
 $headerTopBarColor: stencilColor("color-white");
 $headerTopBarBackground: linear-gradient(to right, #f6882a, #ef492c);
-
+$headerTopbarColor-hover: #FFD800;
 body {
     padding-top: 0;
 }
@@ -22,10 +22,35 @@ body {
     margin-top: 0;
 }
 
-[data-content-region="above_header_banner--global"] {
+.balance-points-banner {
     background-image: $headerTopBarBackground;
     padding: 13px 15px;
-    z-index: 2;
+    z-index: 3;
+    text-align: center;
+    color: $headerTopBarColor;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: $fontWeight-semibold;
+    @include breakpoint("medium") {
+        font-size: 18px;
+    }
+    &:hover {
+        a {
+            color: $headerTopbarColor-hover;
+        }
+    }
+    a {
+        font-weight: $fontWeight-bold;
+        color: $color-white;
+        text-decoration: none;
+    }
+}
+
+[data-content-region="above_header_banner--global"] {
+    background-image: $headerTopBarBackground;
+    display: none;
+    padding: 13px 15px;
+    z-index: 3;
     p,
     a {
         color: $headerTopBarColor;
@@ -59,7 +84,12 @@ body {
     padding: 0;
     position: relative;
     top: auto;
-    z-index: 1;
+    z-index: 2;
+    box-shadow: 0 0 20px 15px rgba(0, 0, 0, .1);
+
+    #m-myquote-entry {
+        display: none;
+    }
 
     @include breakpoint("xlarge") {
         display: flex;
@@ -73,6 +103,28 @@ body {
     &.is-open {
         position: fixed;
         top: var(--app-global-banner-height);
+    }
+
+    @media screen and (min-width: 801px) and (max-width: 1440px){
+        .header__inner {
+            .logo-outer {
+                padding-top: 30px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1024px){
+        .header__inner {
+            .header-right {
+                .navUser-item--max-rewards {
+                    display: none;
+                }
+
+                .navUser-section {
+                    padding-right: 0;
+                }
+            }
+        }
     }
 
     .header-middle-container {
@@ -90,10 +142,44 @@ body {
             list-style-type: none;
             display: flex;
             justify-content: flex-start;
+            &.dropdown-menu {
+                display: block;
+                li {
+                    a {
+                        display: block;
+                    }
+                }
+            }
             li {
                 margin-right: 20px;
                 &:last-of-type {
                     margin-right: 0;
+                }
+                .cart-icon {
+                    display: none;
+                }
+                @include breakpoint("medium") {
+                    a.nav-has-label {
+                        text-decoration: none;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        height: auto;
+                        img + span {
+                            font-size: remCalc(16px);
+                            display: none;
+                            text-transform: uppercase;
+                            font-weight: $fontWeight-semibold;
+                            position: absolute;
+                            text-wrap: nowrap;
+                            bottom: -30px;
+                            color: stencilColor("color-primary");
+                            &.cart-icon {
+                                padding-left: 5px;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -131,6 +217,9 @@ body {
             @include breakpoint("medium") {
                 top: -30px;
                 right: 0;
+                &.non-logged-in {
+                    top: -70px;
+                }
             }
 
             img {
@@ -382,7 +471,10 @@ body {
 
     .header-logo-image {
         vertical-align: middle;
-        max-height: none;
+        max-height: 30px;
+        @include breakpoint("medium") {
+            max-height: none;
+        }
     }
 
     .svg-logo {
@@ -537,15 +629,28 @@ body {
 }
 
 @media screen and (max-width: 800px) {
+    .header {
+        .header__bottom-nav {
+            padding-bottom: 0;
+        }
+        nav.navPages,
+        .navPages-list--user {
+            padding-bottom: 50px;
+        }
+
+    }
     .navUser-item--cart {
         img {
-            width: 35px;
+            width: 40px;
+            min-width: 40px;
         }
         .countPill {
-            width: 22px;
-            height: 22px;
+            width: 30px;
+            height: 25px;
+            min-height: 30px;
+            min-width: 30px;
             margin-left: 10px;
-            line-height: 22px;
+            line-height: 30px;
             font-size: remCalc(9.5px)
         }
     }

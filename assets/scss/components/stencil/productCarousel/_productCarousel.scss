@@ -12,6 +12,9 @@
   // 1
   @include grid-row($behavior: nest);
   margin: 0;
+  div.slick-list {
+    padding-bottom: 25px;
+  }
 }
 
 .productCarousel-slide {
@@ -31,6 +34,7 @@
   }
 
   .card {
+    box-shadow: none;
     .card-title {
       overflow-wrap: break-word;
     }

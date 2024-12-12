@@ -2,7 +2,7 @@
     {{#and theme_settings.restrict_new_accounts (if customer_group_id '===' 0)}}
     {{else}}
         <div class="side-cart-action-buttons">
-        <a href="{{urls.cart}}" class="button{{#and theme_settings.enable_minimum_checkout_value (if cart.sub_total.value '<' theme_settings.minimum_checkout_value)}} button--without-checkout{{/and}}">
+        <a href="{{urls.cart}}" class="{{#and theme_settings.enable_minimum_checkout_value (if cart.sub_total.value '<' theme_settings.minimum_checkout_value)}} button--without-checkout{{/and}}">
             {{lang 'cart.preview.view_cart'}}
         </a>
         {{#and theme_settings.enable_minimum_checkout_value (if cart.sub_total.value '<' theme_settings.minimum_checkout_value)}}

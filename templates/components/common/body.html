@@ -1,4 +1,65 @@
-<div class="body {{#if page_type '===' 'product'}}body--product-page{{/if}}" data-currency-code="{{currency_selector.active_currency_code}}">
+<div class="body {{#if page_type '===' 'product'}}body--product-page{{/if}} {{#if page_type '===' 'category'}} is-category-page{{/if}}" data-currency-code="{{currency_selector.active_currency_code}}">
+    {{#if page_type '===' 'category'}}
+        <div class="container">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        <div class="container">
+            <div class="category__header" id="headerTitleContainer">
+                <div class="category-header-inner">
+                    <div class="category-title-container">
+                        {{#unless theme_settings.hide_category_image_on_categories}}
+                        {{#if category.image}}
+                        <div class="category__image-container" style="display: none">
+                            {{> components/common/responsive-img
+                            image=category.image
+                            class="category__image"
+                            fallback_size=theme_settings.zoom_size
+                            lazyload=theme_settings.lazyload_mode
+                            }}
+                        </div>
+                        {{/if}}
+                        {{/unless}}
+                        <h1 class="category__title">{{category.name}}</h1>
+                        {{#if category.total_products '!==' 0}}
+                            <span class="category__title-count">
+                                {{#if category.count '<' category.total_products}}
+                                    ({{lang 'category.showing_some' count=category.count total=category.total_products}})
+                                {{else}}
+                                    ({{lang 'category.showing_all' quantity=category.total_products}})
+                                {{/if}}
+                            </span>
+                        {{/if}}
+                        {{#if category.description}}
+                            <div class="category__description">
+                                {{{region name="above_category_description"}}}
+                                {{{category.description}}}
+                                {{{region name="below_category_description"}}}
+                            </div>
+                        {{/if}}
+
+                    </div>
+                    <div class="filter-container desktop">
+                        <div class="category-options">
+                            {{#if category.show_compare}}
+                            <a class="button category-compare" style="display: none" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--alt"></span></a>
+                            {{/if}}
+
+                            {{> components/products/filter sort=pagination.category.sort}}
+
+                            <div class="show-style">
+                                {{#unless theme_settings.hide_product_count_on_category}}
+                                {{> components/f/category/show-amount}}
+                                {{/unless}}
+
+                                {{> components/f/grid-list-switcher/switcher}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+
     {{#block "hero"}} {{/block}}
     <div class="{{#if page_type '!==' 'product'}}container{{/if}} {{#or (if page_type '===' 'category') (if page_type '===' 'brand') (if page_type '===' 'search')}}category category--{{theme_settings.product_list_display_mode}}{{/or}}">
         {{#block "page"}} {{/block}}

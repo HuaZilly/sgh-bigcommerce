@@ -40,6 +40,9 @@
 // Product list
 @import "products/productList";
 
+// Product widget
+@import "products/productWidget";
+
 // Product view
 @import "products/productView";
 
@@ -51,3 +54,5 @@
 
 // Account
 @import "account/account";
+
+@import "home";

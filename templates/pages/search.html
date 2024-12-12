@@ -142,7 +142,7 @@ product_results:
     {{#if pagination.product_results.total}}
         <div class="category-options {{#if forms.search.section '!=' 'product'}} category--hide{{/if}}" id="product-options">
             {{#if product_results.show_compare}}
-                <a class="button category-compare" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--alt"></span></a>
+                <a class="button category-compare" style="display: none;" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--alt"></span></a>
             {{/if}}
 
             {{> components/products/filter sort=pagination.category.sort}}
